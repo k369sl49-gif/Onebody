@@ -1,33 +1,40 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="scroll-smooth">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ONE BODY | Community & Church</title>
+  <title>ONE BODY — Community &amp; Church</title>
   
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Pretendard Web Font -->
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- Pretendard Font & Typography Accents -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
-            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
-          },
           colors: {
-            brand: {
-              bg: '#F5F5F0',
+            mono: {
+              bg: '#F5F5F0',       /* bymonolog 특유의 웜 오프화이트/크림 베이스 */
               surface: '#FFFFFF',
-              dark: '#121210',
-              muted: '#6E6E66',
-              line: '#D8D8CF',
-              campus: '#D9532F'
+              subtle: '#EAEAE2',
+              line: '#D8D8CF',     /* 1px 정밀 보더 라인 */
+              dark: '#121210',     /* 잉크 블랙 */
+              muted: '#6E6E66',    /* 차분한 보조 텍스트 */
+              campus: '#D9532F',   /* 캠퍼스 미션 테라코타 오렌지 */
+              sage: '#2C4A3E',     /* 딥 포레스트 그린 */
+              olive: '#4F583D'
             }
+          },
+          fontFamily: {
+            sans: ['"Pretendard"', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+            serif: ['"Cormorant Garamond"', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
           }
         }
       }
@@ -35,311 +42,432 @@
   </script>
 
   <style>
-    * {
-      word-break: keep-all;
-    }
     body {
       background-color: #F5F5F0;
       color: #121210;
-      font-family: 'Pretendard', sans-serif;
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
       -webkit-font-smoothing: antialiased;
     }
-    .grid-border {
+    ::selection {
+      background-color: #121210;
+      color: #F5F5F0;
+    }
+    .thin-border {
       border-color: #D8D8CF;
     }
     .view-container {
       display: none;
+      animation: viewFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     .view-container.active {
       display: block;
     }
-    .invert-white {
-      filter: invert(1) brightness(1.5);
+    @keyframes viewFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .img-slot {
+      position: relative;
+      overflow: hidden;
+      background-color: #E6E6DC;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-brand-dark selection:text-white">
+<body class="min-h-screen flex flex-col font-sans break-keep leading-relaxed text-mono-dark">
 
-  <!-- TOP HEADER -->
-  <header class="sticky top-0 z-40 bg-brand-bg/95 backdrop-blur border-b grid-border">
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <!-- 공식 로고 이미지 연동 -->
-      <a href="javascript:void(0)" onclick="switchView('view-overview')" class="flex items-center gap-3">
-        <img src="원바디로고 검정 무배경.png" alt="onebody COMMUNITY & CHURCH" class="h-8 md:h-9 object-contain" onerror="this.style.display='none'; document.getElementById('header-fallback-text').style.display='block';">
-        <span id="header-fallback-text" class="hidden text-xl font-bold tracking-tight">onebody</span>
+  <!-- 1. HEADER (bymonolog style with Official Logo) -->
+  <header class="sticky top-0 z-40 bg-mono-bg/95 backdrop-blur-md border-b thin-border">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
+      
+      <!-- Logo: Vector Representation of 'onebody COMMUNITY & CHURCH' -->
+      <a href="javascript:void(0)" onclick="switchView('view-overview')" class="flex items-center group py-1" title="ONE BODY — Community & Church">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 54" class="h-9 w-auto text-mono-dark transition-opacity group-hover:opacity-75">
+          <text x="0" y="34" font-family="'Cormorant Garamond', 'Times New Roman', serif" font-size="40" font-weight="700" letter-spacing="-1.2" fill="currentColor">onebody</text>
+          <text x="2" y="49" font-family="'JetBrains Mono', 'Pretendard', sans-serif" font-size="8.5" font-weight="600" letter-spacing="3.2" fill="#6E6E66">COMMUNITY &amp; CHURCH</text>
+        </svg>
       </a>
 
-      <!-- 데스크톱 네비게이션 -->
-      <nav class="hidden md:flex items-center gap-6 text-[13px] font-mono tracking-wider">
-        <button onclick="switchView('view-overview')" class="hover:text-brand-muted transition-colors py-1">OVERVIEW</button>
-        <button onclick="switchView('view-campus')" class="hover:text-brand-muted transition-colors py-1">CAMPUS</button>
-        <button onclick="switchView('view-business')" class="hover:text-brand-muted transition-colors py-1">BUSINESS</button>
-        <button onclick="switchView('view-life')" class="hover:text-brand-muted transition-colors py-1">HOUSING</button>
-        <button onclick="switchView('view-gatherings')" class="hover:text-brand-muted transition-colors py-1">GATHERINGS</button>
-        <button onclick="switchView('view-stories')" class="hover:text-brand-muted transition-colors py-1">STORIES</button>
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-8 font-mono text-[12px] tracking-widest uppercase">
+        <button onclick="switchView('view-overview')" class="nav-link py-1 text-mono-dark font-semibold underline transition-colors" data-view="view-overview">Overview</button>
+        <button onclick="switchView('view-campus')" class="nav-link py-1 text-mono-muted hover:text-mono-dark transition-colors" data-view="view-campus">Campus</button>
+        <button onclick="switchView('view-business')" class="nav-link py-1 text-mono-muted hover:text-mono-dark transition-colors" data-view="view-business">Business</button>
+        <button onclick="switchView('view-life')" class="nav-link py-1 text-mono-muted hover:text-mono-dark transition-colors" data-view="view-life">Housing</button>
+        <button onclick="switchView('view-gatherings')" class="nav-link py-1 text-mono-muted hover:text-mono-dark transition-colors" data-view="view-gatherings">Gatherings</button>
+        <button onclick="switchView('view-stories')" class="nav-link py-1 text-mono-muted hover:text-mono-dark transition-colors" data-view="view-stories">Stories</button>
       </nav>
 
-      <!-- 모바일 메뉴 버튼 -->
-      <button onclick="toggleMobileMenu()" class="md:hidden text-xs font-mono border grid-border px-3 py-1.5 rounded">
-        MENU
-      </button>
+      <!-- Sub Actions & Mobile Trigger -->
+      <div class="flex items-center gap-3">
+        <!-- Return Home Button (appears when viewing sub-pages) -->
+        <button id="homeReturnBtn" onclick="switchView('view-overview')" class="hidden items-center gap-1.5 px-3 py-1.5 border thin-border text-mono-dark font-mono text-xs hover:bg-white transition-colors">
+          <span>&larr;</span> <span>HOME</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-mono-dark font-mono text-xs border thin-border">
+          MENU
+        </button>
+      </div>
+
     </div>
 
-    <!-- 모바일 드롭다운 -->
-    <div id="mobile-menu" class="hidden md:hidden border-t grid-border bg-brand-bg px-6 py-4 flex flex-col gap-3 text-sm font-mono">
-      <button onclick="switchView('view-overview'); toggleMobileMenu();" class="text-left py-1.5 border-b grid-border">01. OVERVIEW</button>
-      <button onclick="switchView('view-campus'); toggleMobileMenu();" class="text-left py-1.5 border-b grid-border">02. CAMPUS COMMUNITY</button>
-      <button onclick="switchView('view-business'); toggleMobileMenu();" class="text-left py-1.5 border-b grid-border">03. BUSINESS & WORK</button>
-      <button onclick="switchView('view-life'); toggleMobileMenu();" class="text-left py-1.5 border-b grid-border">04. LIFE TOGETHER (HOUSING)</button>
-      <button onclick="switchView('view-gatherings'); toggleMobileMenu();" class="text-left py-1.5 border-b grid-border">05. GATHERINGS & TRAINING</button>
-      <button onclick="switchView('view-stories'); toggleMobileMenu();" class="text-left py-1.5">06. 8 VOICES OF COMMUNITY</button>
+    <!-- Mobile Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden border-t thin-border bg-mono-bg px-6 py-6 flex flex-col gap-4 font-mono text-xs tracking-wider">
+      <button onclick="switchView('view-overview'); toggleMobileMenu();" class="text-left py-2 border-b thin-border">01. OVERVIEW (홈)</button>
+      <button onclick="switchView('view-campus'); toggleMobileMenu();" class="text-left py-2 border-b thin-border">02. CAMPUS COMMUNITY (캠퍼스)</button>
+      <button onclick="switchView('view-business'); toggleMobileMenu();" class="text-left py-2 border-b thin-border">03. BUSINESS &amp; WORK (일터선교)</button>
+      <button onclick="switchView('view-life'); toggleMobileMenu();" class="text-left py-2 border-b thin-border">04. LIFE TOGETHER (주거·마을)</button>
+      <button onclick="switchView('view-gatherings'); toggleMobileMenu();" class="text-left py-2 border-b thin-border">05. GATHERINGS (예배·훈련)</button>
+      <button onclick="switchView('view-stories'); toggleMobileMenu();" class="text-left py-2">06. 8 VOICES (삶의 이야기들)</button>
     </div>
   </header>
 
-  <!-- MAIN CONTENT AREA -->
+  <!-- MAIN APP VIEWS -->
   <main class="flex-grow">
 
     <!-- ================================================================= -->
-    <!-- 01. VIEW: OVERVIEW (메인 페이지) -->
+    <!-- VIEW 1: OVERVIEW (MAIN HOME)                                      -->
     <!-- ================================================================= -->
     <section id="view-overview" class="view-container active">
       
-      <!-- HERO STATEMENT -->
-      <div class="border-b grid-border">
-        <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
-          <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-brand-muted mb-6">
-            <span>(WHO WE ARE)</span>
-            <span>•</span>
-            <span>요한복음 13:34–35</span>
+      <!-- HERO STATEMENT (bymonolog layout) -->
+      <div class="border-b thin-border">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-16 md:py-28">
+          
+          <div class="flex items-center justify-between mb-8">
+            <span class="font-mono text-xs text-mono-muted tracking-[0.2em] uppercase">
+              (VISION &amp; MISSION — 01)
+            </span>
+            <span class="font-mono text-xs text-mono-muted tracking-widest">
+              CHEONAN, KOREA &bull; EST. 2010
+            </span>
           </div>
-          <h1 class="text-3xl md:text-5xl lg:text-6xl font-normal leading-tight tracking-tight max-w-4xl mb-8">
-            서로 사랑함으로 세상 속에 존재하는 안식공동체
-          </h1>
-          <p class="text-base md:text-lg text-brand-muted max-w-2xl leading-relaxed">
-            우리는 오늘의 세상에 참된 안식이 회복되어야 한다고 믿습니다. 
-            그리스도의 사랑 안에서 우리가 먼저 사랑받는 존재임을 경험하고, 
-            그 사랑으로 서로를 환대하며 세상 곳곳에서 하나님 나라를 살아냅니다.
-          </p>
-        </div>
-      </div>
 
-      <!-- HERO BANNER / PHOTO -->
-      <div class="border-b grid-border bg-brand-dark text-white overflow-hidden">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 min-h-[460px]">
-          <div class="lg:col-span-7 p-8 md:p-14 flex flex-col justify-between border-b lg:border-b-0 lg:border-r grid-border">
-            <span class="text-xs font-mono tracking-widest uppercase text-white/50">(OUR LIFE & VISION)</span>
-            <div>
-              <h2 class="text-2xl md:text-4xl font-normal leading-snug mb-6">
-                “우리가 서로 사랑하면 이로써 모든 사람이 너희가 내 제자인 줄 알리라.”
-              </h2>
-              <p class="text-sm md:text-base text-white/70 leading-relaxed max-w-xl">
-                세상과 분리된 안전지대가 아닌, 안식이 필요한 세상 한가운데로 들어갑니다. 
-                캠퍼스에서, 일터에서, 가정과 지역사회에서 서로의 짐을 나누어 지는 삶입니다.
+          <h1 class="text-3xl sm:text-5xl lg:text-7xl font-semibold leading-[1.15] tracking-[-0.03em] max-w-5xl mb-12">
+            서로 사랑함으로<br>
+            <span class="text-mono-muted font-normal">세상 속에 존재하는</span><br>
+            안식공동체
+          </h1>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pt-10 border-t thin-border">
+            <div class="lg:col-span-7">
+              <p class="text-lg sm:text-xl text-mono-dark leading-relaxed font-normal">
+                “새 계명을 너희에게 주노니 서로 사랑하라. 내가 너희를 사랑한 것 같이 너희도 서로 사랑하라. 너희가 서로 사랑하면 이로써 모든 사람이 너희가 내 제자인 줄 알리라.”
+              </p>
+              <span class="font-mono text-xs text-mono-muted block mt-3 tracking-wider">— 요한복음 13:34–35</span>
+            </div>
+            <div class="lg:col-span-5 font-mono text-xs text-mono-muted leading-relaxed space-y-2">
+              <p>갈등과 비교, 불안이 일상이 된 시대 속에서 우리는 몸과 마음, 관계와 삶 전체가 회복되는 하나님의 참된 안식을 일상에서 함께 누려갑니다.</p>
+              <p class="text-mono-dark font-medium pt-1 whitespace-nowrap tracking-wider text-xs sm:text-sm">
+                EAT · WORK · GROW
               </p>
             </div>
-            <div class="pt-6 text-xs font-mono text-white/40">
-              ONEBODY COMMUNITY ARCHIVE
-            </div>
           </div>
-          <div class="lg:col-span-5 relative bg-white/5 min-h-[300px]">
-            <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=80" alt="원바디 공동체 식탁" class="w-full h-full object-cover">
-            <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur px-3 py-1 text-[11px] font-mono text-white/90">
-              PHOTO: 연곡센터 공동식탁
-            </div>
+
+        </div>
+      </div>
+
+      <!-- EDITORIAL PHOTO BANNER -->
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-12">
+        <div class="img-slot w-full aspect-[16/8] sm:aspect-[21/9] border thin-border relative group" data-img-id="HERO_MAIN_COMMUNITY">
+          <img 
+            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=2000&q=80" 
+            alt="원바디 공동체 식탁과 교제" 
+            class="w-full h-full object-cover filter grayscale contrast-[1.08] opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-700"
+          >
+          <div class="absolute bottom-4 left-4 font-mono text-[10px] tracking-widest bg-mono-dark text-white px-3 py-1.5 flex items-center gap-2">
+            <span>[PHOTO: ONEBODY COMMUNITY ARCHIVE]</span>
           </div>
         </div>
       </div>
 
-      <!-- CORE PILLARS: EAT · WORK · GROW -->
-      <div class="border-b grid-border">
-        <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
-          <div class="text-xs font-mono text-brand-muted uppercase tracking-widest mb-10">
-            (HOW WE LIVE) • 원바디가 함께 살아가는 3가지 방식
+      <!-- 3 CORE PILLARS: EAT · WORK · GROW (한 줄 정렬 완료) -->
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-24">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <span class="font-mono text-xs text-mono-muted tracking-[0.2em] uppercase block mb-3">(HOW WE LIVE)</span>
+            <h2 class="text-3xl sm:text-5xl font-semibold text-mono-dark tracking-[-0.03em] whitespace-nowrap">
+              EAT · WORK · GROW
+            </h2>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            <div class="p-8 bg-brand-surface border grid-border flex flex-col justify-between">
-              <div>
-                <span class="text-xs font-mono text-brand-muted block mb-3">PILLAR 01</span>
-                <h3 class="text-xl font-medium mb-4 whitespace-nowrap">EAT · WORK · GROW</h3>
-                <p class="text-xs font-mono text-brand-muted mb-4 leading-normal">행 2:46 집에서 떡을 떼며 기쁨과 순전한 마음으로 음식을 먹고</p>
-                <p class="text-sm text-brand-muted leading-relaxed">
-                  함께 먹고 마시는 식탁에서 예수 그리스도의 자기 내어주심을 기억합니다. 말씀과 사랑, 시간과 돌봄을 나누며 서로를 먹이고, 세상의 굶주린 이웃을 향해 식탁을 넓혀갑니다.
-                </p>
-              </div>
-            </div>
-
-            <div class="p-8 bg-brand-surface border grid-border flex flex-col justify-between">
-              <div>
-                <span class="text-xs font-mono text-brand-muted block mb-3">PILLAR 02</span>
-                <h3 class="text-xl font-medium mb-4 whitespace-nowrap">WORK</h3>
-                <p class="text-xs font-mono text-brand-muted mb-4 leading-normal">창 2:15 에덴동산에 두어 그것을 경작하며 지키게 하시고</p>
-                <p class="text-sm text-brand-muted leading-relaxed">
-                  노동은 단순한 생계 수단이 아닌 세상을 돌보고 섬기는 거룩한 부르심입니다. 캠퍼스, 일터, 비즈니스 현장에서 정직함으로 일하며 하나님 나라의 창조성을 드러냅니다.
-                </p>
-              </div>
-            </div>
-
-            <div class="p-8 bg-brand-surface border grid-border flex flex-col justify-between">
-              <div>
-                <span class="text-xs font-mono text-brand-muted block mb-3">PILLAR 03</span>
-                <h3 class="text-xl font-medium mb-4 whitespace-nowrap">GROW</h3>
-                <p class="text-xs font-mono text-brand-muted mb-4 leading-normal">엡 4:15 오직 사랑 안에서 참된 것을 하여 범사에 그에게까지 자랄지라</p>
-                <p class="text-sm text-brand-muted leading-relaxed">
-                  서로 다른 배경과 은사를 가진 이들이 사랑 안에서 진실하게 소통합니다. 서로의 연약함을 품고 함께 책임지며, 공동체 전체가 그리스도의 장성한 분량에 이르도록 성장합니다.
-                </p>
-              </div>
-            </div>
-
-          </div>
+          <p class="text-sm text-mono-muted max-w-md">원바디가 하나님과 이웃 앞에서 함께 살아가는 세 가지 일상의 방식입니다.</p>
         </div>
-      </div>
 
-      <!-- COMMUNITY TIMELINE -->
-      <div class="border-b grid-border bg-brand-surface">
-        <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
-          <div class="text-xs font-mono text-brand-muted uppercase tracking-widest mb-12">
-            (OUR STORY) • 캠퍼스에서 일터와 마을로 이어진 여정
-          </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x thin-border border-t thin-border">
           
-          <div class="space-y-12">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 pb-10 border-b grid-border">
-              <div class="md:col-span-3">
-                <span class="text-2xl font-mono block">ONEBODY 1.0</span>
-                <span class="text-xs font-mono text-brand-muted">2010 — 기초를 세우다</span>
-              </div>
-              <div class="md:col-span-9">
-                <h4 class="text-lg font-medium mb-2">캠퍼스에서 시작된 제자도와 공동식탁</h4>
-                <p class="text-sm text-brand-muted leading-relaxed">
-                  "어떻게 하면 예수님처럼 살 수 있을까?"라는 질문을 품고 캠퍼스에서 한 사람을 복음으로 만나 제자로 세웠습니다. 선교사 가정과 청년들이 한집에서 생활하며 관계 맺고 갈등하고 용서하는 공동체 영성훈련의 기초가 세워졌습니다.
-                </p>
+          <!-- EAT -->
+          <div class="pt-10 lg:pt-0 lg:px-8 first:pl-0 space-y-6">
+            <span class="font-mono text-xs text-mono-muted block">(01/03)</span>
+            <h3 class="text-3xl font-bold text-mono-dark">EAT</h3>
+            <p class="font-mono text-xs text-mono-campus tracking-wider font-semibold">서로를 먹이며 한 몸으로 세워간다</p>
+            
+            <div class="img-slot aspect-[4/3] border thin-border relative group" data-img-id="PILLAR_EAT">
+              <img 
+                src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=900&q=80" 
+                alt="함께하는 식탁 교제" 
+                class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-500"
+              >
+            </div>
+
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
+              우리는 육체적인 음식만 나누지 않습니다. 말씀과 사랑, 격려와 지혜, 재정과 시간, 돌봄과 기회를 나누며 영적·정서적·육체적 모든 차원에서 서로를 먹입니다. 아무도 굶주리거나 홀로 버려지지 않는 식탁을 세상 가운데 넓혀갑니다.
+            </p>
+            <div class="font-mono text-[11px] text-mono-muted border-t thin-border pt-4">
+              REF: 사도행전 2:46
+            </div>
+          </div>
+
+          <!-- WORK -->
+          <div class="pt-10 lg:pt-0 lg:px-8 space-y-6">
+            <span class="font-mono text-xs text-mono-muted block">(02/03)</span>
+            <h3 class="text-3xl font-bold text-mono-dark">WORK</h3>
+            <p class="font-mono text-xs text-mono-campus tracking-wider font-semibold">세상 속에서 함께 일하며 선교한다</p>
+            
+            <div class="img-slot aspect-[4/3] border thin-border relative group" data-img-id="PILLAR_WORK">
+              <img 
+                src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80" 
+                alt="목공과 건축 노동의 현장" 
+                class="w-full h-full object-cover filter grayscale contrast-110 group-hover:scale-105 transition-transform duration-500"
+              >
+            </div>
+
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
+              일은 단순히 생계를 위한 수단이 아니라 세상을 돌보고 이웃을 섬기는 거룩한 부르심입니다. 캠퍼스, 일터, 비즈니스 현장을 책임 있게 경작하며 하나님의 창조성과 선하심을 드러냅니다.
+            </p>
+            <div class="font-mono text-[11px] text-mono-muted border-t thin-border pt-4">
+              REF: 창세기 2:15
+            </div>
+          </div>
+
+          <!-- GROW -->
+          <div class="pt-10 lg:pt-0 lg:px-8 last:pr-0 space-y-6">
+            <span class="font-mono text-xs text-mono-muted block">(03/03)</span>
+            <h3 class="text-3xl font-bold text-mono-dark">GROW</h3>
+            <p class="font-mono text-xs text-mono-campus tracking-wider font-semibold">사랑 안에서 함께 자란다</p>
+            
+            <div class="img-slot aspect-[4/3] border thin-border relative group" data-img-id="PILLAR_GROW">
+              <img 
+                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80" 
+                alt="함께 성장하는 청년들" 
+                class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-500"
+              >
+            </div>
+
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
+              차이를 지우지 않고 각 사람의 부르심을 존중하며 진리를 사랑 안에서 나눕니다. 서로를 조종하지 않으며 각 지체가 온몸을 건강하게 세워 그리스도의 장성한 분량에 이르기까지 함께 성장합니다.
+            </p>
+            <div class="font-mono text-[11px] text-mono-muted border-t thin-border pt-4">
+              REF: 에베소서 4:15
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CHRONOLOGY TIMELINE (1.0 -> 2.0 -> NOW) -->
+      <div class="border-t thin-border bg-white">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-24">
+          <div class="mb-16">
+            <span class="font-mono text-xs text-mono-muted tracking-[0.2em] uppercase block mb-2">(CHRONOLOGY)</span>
+            <h2 class="text-3xl sm:text-5xl font-semibold text-mono-dark tracking-[-0.03em]">우리가 걸어온 이야기</h2>
+          </div>
+
+          <div class="space-y-16 border-l thin-border pl-6 sm:pl-12 ml-2 sm:ml-4">
+            <!-- 1.0 -->
+            <div class="relative group">
+              <span class="absolute -left-[31px] sm:-left-[55px] top-1 w-3 h-3 rounded-full bg-mono-dark ring-4 ring-white"></span>
+              <div class="font-mono text-xs text-mono-muted mb-2 tracking-widest">2010 — 2017 / ONEBODY 1.0</div>
+              <h3 class="text-2xl sm:text-3xl font-bold text-mono-dark mb-4">함께 예배하고 사랑하며 세운 공동체의 기초</h3>
+              <p class="text-sm text-mono-muted leading-relaxed max-w-3xl mb-6 font-sans">
+                유정민·이미지 선교사 가정을 통해 안양에서 시작된 캠퍼스바나바훈련(CBM). "어떻게 하면 예수님처럼 살 수 있을까?"라는 질문으로 시작해 선교사 가정과 청년들이 한집에서 생활하며 함께 기도하고 갈등하고 용서하는 공동체 영성훈련을 세워갔습니다.
+              </p>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl font-mono text-xs text-mono-muted">
+                <div class="border thin-border p-3 bg-mono-bg">캠퍼스 제자훈련</div>
+                <div class="border thin-border p-3 bg-mono-bg">공동체 하우스 개척</div>
+                <div class="border thin-border p-3 bg-mono-bg">삶의 나눔 훈련</div>
+                <div class="border thin-border p-3 bg-mono-bg">가족공동체 세우기</div>
               </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 pb-10 border-b grid-border">
-              <div class="md:col-span-3">
-                <span class="text-2xl font-mono block">ONEBODY 2.0</span>
-                <span class="text-xs font-mono text-brand-muted">삶의 기반을 세우다</span>
-              </div>
-              <div class="md:col-span-9">
-                <h4 class="text-lg font-medium mb-2">일터, 신혼 주거, 목조주택 직접 짓기</h4>
-                <p class="text-sm text-brand-muted leading-relaxed">
-                  청년들이 졸업하고 결혼하며 마주한 높은 주거 현실 앞에서, 7명의 청년이 직접 목조주택 건축 기술을 배워 5가정이 함께 살아갈 연곡센터를 지었습니다. 건축 비즈니스(원바디 빌더)와 공동육아 어린이집, 로컬 식당 등 구체적인 삶의 영역으로 선교가 확장되었습니다.
-                </p>
+            <!-- 2.0 -->
+            <div class="relative group">
+              <span class="absolute -left-[31px] sm:-left-[55px] top-1 w-3 h-3 rounded-full bg-mono-campus ring-4 ring-white"></span>
+              <div class="font-mono text-xs text-mono-campus mb-2 tracking-widest font-semibold">2018 — 2024 / ONEBODY 2.0</div>
+              <h3 class="text-2xl sm:text-3xl font-bold text-mono-dark mb-4">함께 삶의 기반을 세웠던 시간</h3>
+              <p class="text-sm text-mono-muted leading-relaxed max-w-3xl mb-6 font-sans">
+                청년들의 졸업과 결혼, 출산 속에서 마주한 높은 주거 불안 앞에서, 청년들이 직접 목조주택 기술을 배워 천안 연곡리에 보금자리를 지었습니다. 건축 비즈니스(원바디 빌더)와 공동육아(아이림어린이집), 지역 요식업(버거입장, 입장돈까스)의 도전이 확장되었습니다.
+              </p>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl font-mono text-xs text-mono-muted">
+                <div class="border thin-border p-3 bg-mono-bg">원바디 연곡센터</div>
+                <div class="border thin-border p-3 bg-mono-bg">희망더함빌리지 (16가구)</div>
+                <div class="border thin-border p-3 bg-mono-bg">원바디 빌더 건축</div>
+                <div class="border thin-border p-3 bg-mono-bg">로컬 비즈니스 도전</div>
               </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-              <div class="md:col-span-3">
-                <span class="text-2xl font-mono block">NOW</span>
-                <span class="text-xs font-mono text-brand-muted">세상 속에 존재하는 안식</span>
-              </div>
-              <div class="md:col-span-9">
-                <h4 class="text-lg font-medium mb-2">온 땅의 그리스도의 몸과 함께</h4>
-                <p class="text-sm text-brand-muted leading-relaxed">
-                  우리는 우리만의 성공을 좇지 않습니다. 캠퍼스와 일터, 마을 곳곳에서 안식과 회복의 통로가 되는 작은 공동체들이 세워지길 꿈꾸며, 온 세상의 교회와 지체들과 함께 하나님의 나라를 섬깁니다.
-                </p>
-              </div>
+            <!-- NOW -->
+            <div class="relative group">
+              <span class="absolute -left-[31px] sm:-left-[55px] top-1 w-3 h-3 rounded-full bg-mono-sage ring-4 ring-white"></span>
+              <div class="font-mono text-xs text-mono-sage mb-2 tracking-widest font-semibold">PRESENT / NOW</div>
+              <h3 class="text-2xl sm:text-3xl font-bold text-mono-dark mb-4">세상 속 안식과 회복의 통로로</h3>
+              <p class="text-sm text-mono-muted leading-relaxed max-w-3xl font-sans">
+                더 많은 프로그램과 사업 자체가 목표가 아닙니다. 온 세상에 세우신 크신 그리스도의 몸 안에서 우리에게 맡겨진 작은 몫을 겸손히 감당하며, 평범한 일상 속에서 하나님 나라를 증언합니다.
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 메인 최하단: 원바디의 사역과 삶의 자리 탐색하기 -->
-      <div class="border-b grid-border bg-brand-bg">
-        <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
-          <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <!-- IN-PAGE MAIN NAVIGATION CARDS WITH RELAXED EDITORIAL PHOTO SLOTS (PLACED AT VERY BOTTOM) -->
+      <div class="border-t thin-border bg-mono-bg">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-20 md:py-28">
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
             <div>
-              <span class="text-xs font-mono uppercase tracking-widest text-brand-muted block mb-3">(EXPLORE COMMUNITIES)</span>
-              <h2 class="text-2xl md:text-4xl font-normal tracking-tight">원바디의 사역과 삶의 자리 탐색하기</h2>
+              <span class="font-mono text-xs text-mono-muted tracking-[0.2em] uppercase block mb-3">(MAIN DIRECTORY)</span>
+              <h2 class="text-2xl sm:text-4xl font-semibold text-mono-dark tracking-[-0.02em]">원바디의 사역과 삶의 자리 탐색하기</h2>
             </div>
-            <p class="text-xs font-mono text-brand-muted mt-4 md:mt-0">원하시는 영역을 누르면 상세 페이지로 바로 전환됩니다.</p>
+            <p class="font-mono text-xs text-mono-muted mt-3 md:mt-0">원하시는 영역을 선택하시면 각 커뮤니티의 상세 페이지로 바로 이동합니다.</p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- 5 Editorial Photo Navigation Cards Grid with breathing room -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
             <!-- 01. 캠퍼스 커뮤니티 -->
-            <div onclick="switchView('view-campus')" class="group cursor-pointer p-8 bg-brand-surface border grid-border hover:border-brand-dark transition-all flex flex-col justify-between min-h-[260px]">
+            <div onclick="switchView('view-campus')" class="group cursor-pointer bg-white border thin-border hover:border-mono-dark transition-all flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md">
               <div>
-                <div class="flex items-center justify-between text-xs font-mono text-brand-muted mb-4">
-                  <span>(01)</span>
-                  <span class="group-hover:translate-x-1 transition-transform">→</span>
+                <div class="img-slot aspect-[16/10] border-b thin-border relative overflow-hidden" data-img-id="EXPLORE_CAMPUS">
+                  <img 
+                    src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80" 
+                    alt="캠퍼스 커뮤니티" 
+                    class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-700"
+                  >
+                  <div class="absolute top-3 left-3 bg-black/60 backdrop-blur px-2.5 py-1 text-[10px] font-mono text-white tracking-widest">
+                    (01) CAMPUS
+                  </div>
                 </div>
-                <h3 class="text-xl font-medium mb-3">캠퍼스 커뮤니티</h3>
-                <p class="text-xs text-brand-muted leading-relaxed">
-                  “대학이 바뀌면 세상이 바뀐다.” 매주 청년들을 만나 복음을 전하고, 학과별 기도모임과 비즈니스 선교훈련을 세워갑니다.
-                </p>
+                <div class="p-6 sm:p-8 space-y-3">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-2xl font-bold group-hover:text-mono-campus transition-colors">캠퍼스 커뮤니티</h3>
+                    <span class="font-mono text-sm text-mono-muted group-hover:translate-x-1 transition-transform">&rarr;</span>
+                  </div>
+                  <p class="text-xs text-mono-muted leading-relaxed font-sans">
+                    “대학이 바뀌면 세상이 바뀐다.” 매주 캠퍼스에서 청년들을 만나 복음을 전하고, 학과별 기도모임과 비즈니스 선교훈련을 세워갑니다.
+                  </p>
+                </div>
               </div>
-              <div class="pt-6 border-t grid-border text-[11px] font-mono text-brand-muted">
-                CAMPUS OUTREACH & MISSIONS
+              <div class="px-6 sm:px-8 pb-6 pt-2 font-mono text-[11px] text-mono-muted border-t thin-border">
+                CAMPUS OUTREACH &bull; PRAYER MEETINGS
               </div>
             </div>
 
             <!-- 02. 비즈니스 & 일터 -->
-            <div onclick="switchView('view-business')" class="group cursor-pointer p-8 bg-brand-surface border grid-border hover:border-brand-dark transition-all flex flex-col justify-between min-h-[260px]">
+            <div onclick="switchView('view-business')" class="group cursor-pointer bg-white border thin-border hover:border-mono-dark transition-all flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md">
               <div>
-                <div class="flex items-center justify-between text-xs font-mono text-brand-muted mb-4">
-                  <span>(02)</span>
-                  <span class="group-hover:translate-x-1 transition-transform">→</span>
+                <div class="img-slot aspect-[16/10] border-b thin-border relative overflow-hidden" data-img-id="EXPLORE_BUSINESS">
+                  <img 
+                    src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80" 
+                    alt="비즈니스 커뮤니티" 
+                    class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-700"
+                  >
+                  <div class="absolute top-3 left-3 bg-black/60 backdrop-blur px-2.5 py-1 text-[10px] font-mono text-white tracking-widest">
+                    (02) BUSINESS &amp; WORK
+                  </div>
                 </div>
-                <h3 class="text-xl font-medium mb-3">비즈니스 커뮤니티</h3>
-                <p class="text-xs text-brand-muted leading-relaxed">
-                  “기도하며 출근합니다.” 일터를 선교지로 품고 일하는 직장인 모임(OBC)과 지역사회의 필요를 채우는 5대 비즈니스 프로젝트.
-                </p>
+                <div class="p-6 sm:p-8 space-y-3">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-2xl font-bold group-hover:text-mono-sage transition-colors">비즈니스 &amp; 일터선교</h3>
+                    <span class="font-mono text-sm text-mono-muted group-hover:translate-x-1 transition-transform">&rarr;</span>
+                  </div>
+                  <p class="text-xs text-mono-muted leading-relaxed font-sans">
+                    “기도하며 출근합니다.” 일터를 선교지로 품고 일하는 직장인 모임(OBC)과 지역사회의 필요를 채우는 5대 비즈니스 프로젝트.
+                  </p>
+                </div>
               </div>
-              <div class="pt-6 border-t grid-border text-[11px] font-mono text-brand-muted">
-                BUSINESS AS MISSION (BAM)
+              <div class="px-6 sm:px-8 pb-6 pt-2 font-mono text-[11px] text-mono-muted border-t thin-border">
+                BUSINESS AS MISSION (BAM) &bull; 5 VENTURES
               </div>
             </div>
 
             <!-- 03. 삶의 자리 (주거/마을) -->
-            <div onclick="switchView('view-life')" class="group cursor-pointer p-8 bg-brand-surface border grid-border hover:border-brand-dark transition-all flex flex-col justify-between min-h-[260px]">
+            <div onclick="switchView('view-life')" class="group cursor-pointer bg-white border thin-border hover:border-mono-dark transition-all flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md">
               <div>
-                <div class="flex items-center justify-between text-xs font-mono text-brand-muted mb-4">
-                  <span>(03)</span>
-                  <span class="group-hover:translate-x-1 transition-transform">→</span>
+                <div class="img-slot aspect-[16/10] border-b thin-border relative overflow-hidden" data-img-id="EXPLORE_LIFE">
+                  <img 
+                    src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80" 
+                    alt="삶의 자리 (주거와 마을)" 
+                    class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-700"
+                  >
+                  <div class="absolute top-3 left-3 bg-black/60 backdrop-blur px-2.5 py-1 text-[10px] font-mono text-white tracking-widest">
+                    (03) LIFE TOGETHER
+                  </div>
                 </div>
-                <h3 class="text-xl font-medium mb-3">더불어 사는 삶의 자리</h3>
-                <p class="text-xs text-brand-muted leading-relaxed">
-                  청년 주거 문제를 함께 짊어지며 직접 지은 연곡센터, 16가구 22명 아이들의 희망더함빌리지, 생활 영성훈련 원바디 하우스.
-                </p>
+                <div class="p-6 sm:p-8 space-y-3">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-2xl font-bold group-hover:text-mono-olive transition-colors">더불어 사는 삶의 자리</h3>
+                    <span class="font-mono text-sm text-mono-muted group-hover:translate-x-1 transition-transform">&rarr;</span>
+                  </div>
+                  <p class="text-xs text-mono-muted leading-relaxed font-sans">
+                    청년 주거 문제를 함께 짊어지며 직접 지은 연곡센터, 16가구 22명 아이들의 희망더함빌리지, 생활 영성훈련 원바디 하우스.
+                  </p>
+                </div>
               </div>
-              <div class="pt-6 border-t grid-border text-[11px] font-mono text-brand-muted">
-                HOUSING & COMMUNITY VILLAGE
+              <div class="px-6 sm:px-8 pb-6 pt-2 font-mono text-[11px] text-mono-muted border-t thin-border">
+                HOUSING &bull; VILLAGE &bull; DISCIPLE HOUSE
               </div>
             </div>
 
             <!-- 04. 예배 & 훈련 -->
-            <div onclick="switchView('view-gatherings')" class="group cursor-pointer p-8 bg-brand-surface border grid-border hover:border-brand-dark transition-all flex flex-col justify-between min-h-[260px]">
+            <div onclick="switchView('view-gatherings')" class="group cursor-pointer bg-white border thin-border hover:border-mono-dark transition-all flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md">
               <div>
-                <div class="flex items-center justify-between text-xs font-mono text-brand-muted mb-4">
-                  <span>(04)</span>
-                  <span class="group-hover:translate-x-1 transition-transform">→</span>
+                <div class="img-slot aspect-[16/10] border-b thin-border relative overflow-hidden" data-img-id="EXPLORE_GATHERINGS">
+                  <img 
+                    src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" 
+                    alt="예배와 훈련 모임" 
+                    class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-700"
+                  >
+                  <div class="absolute top-3 left-3 bg-black/60 backdrop-blur px-2.5 py-1 text-[10px] font-mono text-white tracking-widest">
+                    (04) WORSHIP &amp; TRAINING
+                  </div>
                 </div>
-                <h3 class="text-xl font-medium mb-3">예배 & 공동체 훈련</h3>
-                <p class="text-xs text-brand-muted leading-relaxed">
-                  만찬예배가 있는 원바디처치, 선교적 공동체 훈련(MCT), 1년 과정 공동체 영성훈련, 안식 컨퍼런스 및 평화의 여정.
-                </p>
+                <div class="p-6 sm:p-8 space-y-3">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-2xl font-bold group-hover:text-mono-dark transition-colors">예배 &amp; 공동체 훈련</h3>
+                    <span class="font-mono text-sm text-mono-muted group-hover:translate-x-1 transition-transform">&rarr;</span>
+                  </div>
+                  <p class="text-xs text-mono-muted leading-relaxed font-sans">
+                    만찬예배가 있는 원바디처치, 선교적 공동체 훈련(MCT), 1년 과정 공동체 영성훈련, 안식 컨퍼런스 및 평화의 여정.
+                  </p>
+                </div>
               </div>
-              <div class="pt-6 border-t grid-border text-[11px] font-mono text-brand-muted">
-                CHURCH & SPIRITUAL TRAINING
+              <div class="px-6 sm:px-8 pb-6 pt-2 font-mono text-[11px] text-mono-muted border-t thin-border">
+                CHURCH &bull; MCT TRAINING &bull; RETREAT
               </div>
             </div>
 
-            <!-- 05. 삶의 이야기들 (8인 증언) -->
-            <div onclick="switchView('view-stories')" class="group cursor-pointer p-8 bg-brand-surface border grid-border hover:border-brand-dark transition-all flex flex-col justify-between min-h-[260px] md:col-span-2 lg:col-span-2">
-              <div>
-                <div class="flex items-center justify-between text-xs font-mono text-brand-muted mb-4">
-                  <span>(05)</span>
-                  <span class="group-hover:translate-x-1 transition-transform">→</span>
+            <!-- 05. 삶의 이야기들 (텍스트 중심의 정제된 카드) -->
+            <div onclick="switchView('view-stories')" class="group cursor-pointer bg-white border thin-border hover:border-mono-dark transition-all flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md md:col-span-2 lg:col-span-2 p-8 sm:p-10">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between text-xs font-mono text-mono-muted">
+                  <span>(05) 8 VOICES OF COMMUNITY</span>
+                  <span class="text-sm group-hover:translate-x-1 transition-transform">&rarr;</span>
                 </div>
-                <h3 class="text-xl font-medium mb-3">공동체와 함께한 삶의 이야기들</h3>
-                <p class="text-xs text-brand-muted leading-relaxed max-w-xl">
-                  캠퍼스에서 회심한 학생, 일터에서 부르심을 발견한 어린이집 교사와 햄버거집 사장님, 공동육아로 행복을 찾은 부부 등 8인의 솔직한 삶의 고백.
+                <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-mono-dark">공동체와 함께한 8인의 삶의 고백</h3>
+                <p class="text-sm text-mono-muted leading-relaxed font-sans max-w-3xl">
+                  캠퍼스에서 회심한 학생, 일터에서 부르심을 발견한 어린이집 교사와 햄버거집 사장님, 공동육아로 소통을 배운 부부 등 8인이 들려주는 진짜 삶의 이야기들을 만나보세요.
                 </p>
               </div>
-              <div class="pt-6 border-t grid-border text-[11px] font-mono text-brand-muted">
-                8 VOICES & TESTIMONIES
+              <div class="pt-6 mt-6 border-t thin-border flex flex-wrap gap-x-5 gap-y-2 font-mono text-[11px] text-mono-muted">
+                <span>이광희 (하우스)</span><span>&bull;</span>
+                <span>김현수 (나사렛대)</span><span>&bull;</span>
+                <span>채수찬 (유학생)</span><span>&bull;</span>
+                <span>최동아 (버거입장)</span><span>&bull;</span>
+                <span>전예나 (어린이집)</span><span>&bull;</span>
+                <span>김성미 (가정)</span><span>&bull;</span>
+                <span>유경수 (영성훈련)</span><span>&bull;</span>
+                <span>이주호 (원바디처치)</span>
               </div>
             </div>
 
@@ -351,391 +479,578 @@
 
 
     <!-- ================================================================= -->
-    <!-- 02. VIEW: CAMPUS COMMUNITY (캠퍼스 전용 섹션) -->
+    <!-- VIEW 2: CAMPUS COMMUNITY (캠퍼스 전용 섹션)                       -->
     <!-- ================================================================= -->
     <section id="view-campus" class="view-container">
-      <div class="border-b grid-border bg-brand-surface">
-        <div class="max-w-7xl mx-auto px-6 py-12 flex items-center justify-between">
-          <span class="text-xs font-mono text-brand-muted uppercase">(SECTION 02 / CAMPUS)</span>
-          <button onclick="switchView('view-overview')" class="text-xs font-mono text-brand-dark hover:underline">← 홈으로 돌아가기</button>
+      
+      <!-- Sticky Return Bar -->
+      <div class="border-b thin-border bg-mono-subtle/60 px-6 md:px-12 py-3 flex items-center justify-between text-xs font-mono">
+        <button onclick="switchView('view-overview')" class="text-mono-dark hover:underline flex items-center gap-1.5 font-medium">
+          <span>&larr;</span> <span>홈(전체 목차)으로 돌아가기</span>
+        </button>
+        <span class="text-mono-muted">SECTION: (01) CAMPUS</span>
+      </div>
+
+      <!-- Campus Hero -->
+      <div class="border-b thin-border bg-white">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-16 md:py-24">
+          <div class="inline-flex items-center gap-2 px-3 py-1 border border-mono-campus text-mono-campus font-mono text-xs mb-6">
+            <span class="w-2 h-2 rounded-full bg-mono-campus"></span>
+            ONEBODY CAMPUS COMMUNITY
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold leading-[1.2] text-mono-dark max-w-4xl mb-6 tracking-[-0.03em]">
+            “우리는 대학이 바뀌면,<br>
+            <span class="text-mono-campus">세상이 바뀐다고</span> 믿습니다.”
+          </h1>
+
+          <p class="text-base sm:text-lg text-mono-muted max-w-2xl leading-relaxed font-sans">
+            2010년 예수님처럼 살고 싶다는 한 사람의 순종에서 시작되었습니다.
+            경쟁과 비교 속에 방향을 잃은 청년들에게 복음의 참된 안식을 전하고, 학과마다 작은 기도모임을 개척하며 세상으로 파송합니다.
+          </p>
         </div>
       </div>
 
-      <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
-        <span class="text-xs font-mono text-brand-muted uppercase tracking-widest block mb-4">ONEBODY CAMPUS COMMUNITY</span>
-        <h2 class="text-3xl md:text-5xl font-normal mb-8">“우리는 대학이 바뀌면, 세상이 바뀐다고 믿습니다.”</h2>
-        <p class="text-base md:text-lg text-brand-muted max-w-3xl leading-relaxed mb-16">
-          원바디의 이야기는 2010년 대학 캠퍼스에서 시작되었습니다.
-          미래를 준비하지만 경쟁과 비교 속에서 외로움과 불안을 겪는 청년들에게 복음의 빛을 전하고, 
-          한 사람을 예수님의 제자로 세워 삶의 현장으로 파송합니다.
-        </p>
-
-        <!-- 3대 캠퍼스 사역 카드 -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          <div class="p-8 border grid-border bg-brand-surface">
-            <span class="text-xs font-mono text-brand-muted block mb-3">01 / CAMPUS OUTREACH</span>
-            <h3 class="text-xl font-medium mb-3">캠퍼스 복음화 & 기도모임</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
-              매주 캠퍼스에서 청년들을 만나 복음을 전하고 삶을 나눕니다. 각 학과마다 2~3명이 모여 기도하는 작은 모임을 세워 캠퍼스 전체로 복음의 흐름을 만들어갑니다.
-            </p>
-          </div>
-
-          <div class="p-8 border grid-border bg-brand-surface">
-            <span class="text-xs font-mono text-brand-muted block mb-3">02 / MARKETPLACE PREP</span>
-            <h3 class="text-xl font-medium mb-3">비즈니스 선교훈련</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
-              캠퍼스 4년, 일터 40년. 대학 시절부터 일터 현장의 선배들을 만나며 자신의 전공과 비즈니스를 통해 하나님 나라의 운동에 참여하도록 훈련합니다.
-            </p>
-          </div>
-
-          <div class="p-8 border grid-border bg-brand-surface">
-            <span class="text-xs font-mono text-brand-muted block mb-3">03 / GLOBAL DIASPORA</span>
-            <h3 class="text-xl font-medium mb-3">유학생 & 이주민 사역</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
-              한국에 온 외국인 유학생과 이주민들에게 다가가 친구가 되어줍니다. 언어와 문화는 달라도 그리스도의 몸 안에서 환대하며 함께 예배합니다.
-            </p>
-          </div>
-        </div>
-
-        <!-- 캠퍼스 커뮤니티 전용 후원 요청 섹션 (맨 밑 위치 & 링크 연동) -->
-        <div class="border grid-border bg-brand-surface p-8 md:p-14">
-          <div class="max-w-3xl">
-            <span class="text-xs font-mono uppercase tracking-widest text-brand-campus block mb-3">ONEBODY COMMUNITY – CAMPUS MISSION</span>
-            <h3 class="text-2xl md:text-3xl font-medium mb-6">“우리는 대학이 바뀌면, 세상이 바뀐다고 믿습니다.”</h3>
-            
-            <div class="space-y-4 text-sm text-brand-muted leading-relaxed mb-8">
-              <p>
-                원바디 커뮤니티의 Campus Mission은 매주 캠퍼스에서 청년들을 만나 복음을 전하고, 함께 삶을 나누며 예수님의 제자로 세워갑니다. 한 사람을 공동체 안에서 세워 캠퍼스에서 세상으로 보냅니다.
-              </p>
-              <div class="pl-4 border-l-2 border-brand-line space-y-2 py-1">
-                <p><strong>1. 캠퍼스 복음화:</strong> 한 사람에게 복음을 전하고, 각 학과에 기도모임을 세워 캠퍼스 전체에 복음이 흘러가게 합니다.</p>
-                <p><strong>2. 비즈니스 선교훈련:</strong> 캠퍼스 4년, 일터 40년. 캠퍼스에서 시작된 제자도가 졸업 후 일터와 삶으로 이어지도록 훈련합니다.</p>
-              </div>
-              <p>
-                여러분의 후원은 캠퍼스에서 한 사람을 만나 복음을 전하고 제자로 세워 세상으로 파송하는 사역에 오롯이 사용됩니다.
-              </p>
-              <p class="font-medium text-brand-dark">
-                매월 1만 원으로 함께할 500명의 동역자를 초대합니다.
+      <!-- Campus Ministries Grid -->
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-24 border-b thin-border">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          
+          <!-- Pillar 1 -->
+          <div class="space-y-6">
+            <div class="img-slot aspect-[16/10] border thin-border relative group" data-img-id="CAMPUS_OUTREACH">
+              <img 
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80" 
+                alt="캠퍼스 잔디밭 모임" 
+                class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-700"
+              >
+            </div>
+            <div class="space-y-3">
+              <span class="font-mono text-xs text-mono-muted">(01/03) OUTREACH</span>
+              <h3 class="text-2xl font-bold text-mono-dark">캠퍼스 복음화</h3>
+              <p class="text-sm text-mono-muted leading-relaxed font-sans">
+                매주 캠퍼스에서 청년들을 만나 복음을 전하고 함께 식탁을 나눕니다. 각 학과에 2~3명이 모여 기도하는 작은 모임을 세워 캠퍼스 전체에 복음이 흘러가는 움직임을 만듭니다.
               </p>
             </div>
+          </div>
 
-            <!-- 미션펀드 공식 후원 링크 버튼 -->
-            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <a href="https://go.missionfund.org/onebodycampusmission" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-brand-dark text-white px-6 py-3.5 text-xs font-mono tracking-wider hover:bg-brand-muted transition-colors">
-                <span>캠퍼스 사역 미션펀드 후원하기</span>
-                <span>↗</span>
-              </a>
-              <span class="text-xs font-mono text-brand-muted">※ 본 링크는 캠퍼스 사역 전용 후원 창구입니다.</span>
+          <!-- Pillar 2 -->
+          <div class="space-y-6">
+            <div class="img-slot aspect-[16/10] border thin-border relative group" data-img-id="CAMPUS_TRAINING">
+              <img 
+                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" 
+                alt="대학생 비즈니스 멘토링" 
+                class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-700"
+              >
+            </div>
+            <div class="space-y-3">
+              <span class="font-mono text-xs text-mono-muted">(02/03) TRAINING</span>
+              <h3 class="text-2xl font-bold text-mono-dark">비즈니스 선교훈련</h3>
+              <p class="text-sm text-mono-muted leading-relaxed font-sans">
+                캠퍼스 4년, 일터 40년. 대학 시절부터 일터 현장의 사람들을 만나며, 자신의 일과 비즈니스를 통해 하나님 나라의 운동에 참여하도록 훈련합니다.
+              </p>
             </div>
           </div>
-        </div>
 
+          <!-- Pillar 3 -->
+          <div class="space-y-6">
+            <div class="img-slot aspect-[16/10] border thin-border relative group" data-img-id="CAMPUS_DIASPORA">
+              <img 
+                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80" 
+                alt="글로벌 유학생 커뮤니티" 
+                class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-700"
+              >
+            </div>
+            <div class="space-y-3">
+              <span class="font-mono text-xs text-mono-muted">(03/03) DIASPORA</span>
+              <h3 class="text-2xl font-bold text-mono-dark">유학생 &amp; 이주민 사역</h3>
+              <p class="text-sm text-mono-muted leading-relaxed font-sans">
+                한국에서 공부하고 일하는 외국인 청년들에게 먼저 다가가 친구가 됩니다. 비타500 나눔과 식탁 교제로 환대하며 그리스도의 몸 된 공동체로 초대합니다.
+              </p>
+            </div>
+          </div>
+
+        </div>
       </div>
+
+      <!-- CAMPUS MISSION DEDICATED DONATION (AT VERY BOTTOM) -->
+      <div class="bg-white py-20 px-6 md:px-12">
+        <div class="max-w-3xl mx-auto border-2 border-mono-campus bg-mono-bg p-8 sm:p-12 relative shadow-sm">
+          <div class="font-mono text-xs text-mono-campus tracking-widest uppercase mb-2">
+            Onebody Community – Campus Mission
+          </div>
+
+          <h3 class="text-2xl sm:text-3xl font-bold text-mono-dark mb-6 tracking-tight">
+            “우리는 대학이 바뀌면, 세상이 바뀐다고 믿습니다.”
+          </h3>
+
+          <div class="space-y-4 text-sm text-mono-muted leading-relaxed font-sans mb-8">
+            <p class="text-mono-dark">
+              원바디 커뮤니티의 <strong>Campus Mission</strong>은 매주 캠퍼스에서 청년들을 만나 복음을 전하고, 함께 삶을 나누며 예수님의 제자로 세워갑니다. 한 사람을 공동체 안에서 세워 캠퍼스에서 세상으로 보냅니다.
+            </p>
+
+            <div class="p-5 bg-white border thin-border space-y-3">
+              <p><strong>1. 캠퍼스 복음화:</strong> 한 사람에게 복음을 전하고 예수님의 제자로 함께 살아갑니다. 각 학과에 기도모임을 세우고 연결하여, 캠퍼스 전체에 복음이 흘러가는 움직임을 만들어갑니다.</p>
+              <p><strong>2. 비즈니스 선교훈련:</strong> 캠퍼스 4년, 일터 40년. 캠퍼스에서부터 실제 일터와 비즈니스 현장의 사람들을 만나며, 자신의 일과 비즈니스를 통해 하나님 나라의 운동에 참여하도록 훈련합니다. 캠퍼스에서 시작된 제자도가 졸업 이후의 일터와 삶으로 이어지도록 함께합니다.</p>
+            </div>
+
+            <p>
+              여러분의 후원은 캠퍼스에서 한 사람을 만나 복음을 전하고, 공동체 안에서 제자로 세워 세상으로 보내는 사역에 사용됩니다.
+            </p>
+
+            <div class="p-4 bg-mono-subtle border thin-border">
+              <p class="text-base font-bold text-mono-dark mb-1">매월 1만 원으로 함께할 500명의 동역자를 초대합니다.</p>
+              <p class="text-xs text-mono-muted">여러분의 동역으로 캠퍼스의 한 사람을 만나고 세상으로 보내는 사역을 계속 이어갈 수 있습니다.</p>
+            </div>
+          </div>
+
+          <!-- 미션펀드 공식 후원 링크 버튼 (다이렉트 연결) -->
+          <a 
+            href="https://go.missionfund.org/onebodycampusmission" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 bg-mono-campus hover:bg-mono-campus/90 text-white font-mono text-xs sm:text-sm font-semibold tracking-wider transition-all"
+          >
+            <span>캠퍼스 미션 후원 동참하기 (미션펀드 링크)</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+
     </section>
 
 
     <!-- ================================================================= -->
-    <!-- 03. VIEW: BUSINESS & WORK (일터 & 비즈니스) -->
+    <!-- VIEW 3: BUSINESS & WORK (일터 & 비즈니스)                         -->
     <!-- ================================================================= -->
     <section id="view-business" class="view-container">
-      <div class="border-b grid-border bg-brand-surface">
-        <div class="max-w-7xl mx-auto px-6 py-12 flex items-center justify-between">
-          <span class="text-xs font-mono text-brand-muted uppercase">(SECTION 03 / BUSINESS)</span>
-          <button onclick="switchView('view-overview')" class="text-xs font-mono text-brand-dark hover:underline">← 홈으로 돌아가기</button>
+      <div class="border-b thin-border bg-mono-subtle/60 px-6 md:px-12 py-3 flex items-center justify-between text-xs font-mono">
+        <button onclick="switchView('view-overview')" class="text-mono-dark hover:underline flex items-center gap-1.5 font-medium">
+          <span>&larr;</span> <span>홈(전체 목차)으로 돌아가기</span>
+        </button>
+        <span class="text-mono-muted">SECTION: (02) BUSINESS</span>
+      </div>
+
+      <div class="border-b thin-border bg-white">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-16 md:py-24">
+          <span class="font-mono text-xs text-mono-muted tracking-[0.2em] uppercase block mb-3">(SECTION — 02)</span>
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-mono-dark max-w-4xl mb-6 tracking-[-0.03em]">
+            “우리는 오늘도<br>
+            <span class="text-mono-muted">기도하며 출근합니다.</span>”
+          </h1>
+          <p class="text-sm sm:text-base text-mono-muted max-w-2xl leading-relaxed font-sans">
+            원바디 비즈니스 선교 커뮤니티(OBC)는 직장과 일터를 하나님께서 보내신 선교의 현장으로 고백합니다.
+            생계의 수단을 넘어 우리의 노동을 거룩한 예배와 섬김으로 드립니다.
+          </p>
         </div>
       </div>
 
-      <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
-        <span class="text-xs font-mono text-brand-muted uppercase tracking-widest block mb-4">ONEBODY BUSINESS COMMUNITY (OBC)</span>
-        <h2 class="text-3xl md:text-5xl font-normal mb-8">“우리는 오늘도 기도하며 출근합니다.”</h2>
-        <p class="text-base md:text-lg text-brand-muted max-w-3xl leading-relaxed mb-16">
-          일터는 한 사람이 인생에서 가장 많은 시간을 보내는 선교의 현장입니다.
-          단순한 생계의 수단이 아니라 부르심의 자리로 받아들이며, 
-          성과와 경쟁 중심의 문화를 하나님 나라의 섬김과 예배로 바꾸어 갑니다.
-        </p>
+      <!-- 5대 비즈니스 현장 프로젝트 -->
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-24">
+        <div class="mb-16">
+          <span class="font-mono text-xs text-mono-muted tracking-[0.2em] uppercase block mb-2">(FIVE VENTURES)</span>
+          <h2 class="text-3xl sm:text-5xl font-bold text-mono-dark tracking-[-0.03em]">세상을 향한 다섯 가지 도전</h2>
+        </div>
 
-        <!-- 5대 비즈니스 도전들 -->
-        <div class="border-t grid-border pt-12">
-          <div class="text-xs font-mono text-brand-muted uppercase tracking-widest mb-10">
-            (MISSION IN THE WORLD) • 세상 속에서 일구어낸 5가지 비즈니스 도전
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- 원바디 빌더 -->
+          <div class="p-8 border thin-border bg-white space-y-4">
+            <span class="font-mono text-xs text-mono-muted tracking-widest block">01 / BUILDER</span>
+            <h3 class="text-2xl font-bold text-mono-dark">원바디 빌더</h3>
+            <p class="font-mono text-xs text-mono-campus font-semibold">“공간과 함께 사람을 세워갑니다”</p>
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
+              청년들의 주거 문제를 함께 짊어지기 위해 목조주택 시공을 배우며 시작되었습니다. 경쟁보다 서로를 책임지는 문화로 목수 5명 전원이 신학생 및 전도사로 구성된 선교적 건축팀입니다.
+            </p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="p-8 border grid-border bg-brand-surface">
-              <span class="text-xs font-mono text-brand-muted block mb-3">01 / BUILDER</span>
-              <h3 class="text-xl font-medium mb-3">원바디 빌더</h3>
-              <p class="text-sm text-brand-muted leading-relaxed">
-                주거 문제를 해결하기 위해 직접 배운 목조주택 시공 기술이 교회 건축과 해비타트 협력 사업으로 확장되었습니다. 과장 없이 정직한 가격으로 사람을 세우는 건축을 합니다.
-              </p>
-            </div>
-
-            <div class="p-8 border grid-border bg-brand-surface">
-              <span class="text-xs font-mono text-brand-muted block mb-3">02 / BURGER IPJANG</span>
-              <h3 class="text-xl font-medium mb-3">버거입장</h3>
-              <p class="text-sm text-brand-muted leading-relaxed">
-                햄버거집이 하나도 없던 천안 입장면에 세워진 수제버거집. 맛있는 음식과 환대를 통해 지역 주민과 기사님, 아이들에게 편안한 쉼과 위로를 전합니다.
-              </p>
-            </div>
-
-            <div class="p-8 border grid-border bg-brand-surface">
-              <span class="text-xs font-mono text-brand-muted block mb-3">03 / IPJANG TONKATSU</span>
-              <h3 class="text-xl font-medium mb-3">입장돈까스</h3>
-              <p class="text-sm text-brand-muted leading-relaxed">
-                10평 남짓한 시골 식당. “만드는 사람이 즐거워야 드시는 분도 행복해진다”는 철학으로 깨끗한 기름과 당일 판매 원칙을 지키며 다정한 한 끼를 나눕니다.
-              </p>
-            </div>
-
-            <div class="p-8 border grid-border bg-brand-surface">
-              <span class="text-xs font-mono text-brand-muted block mb-3">04 / EDUCATION</span>
-              <h3 class="text-xl font-medium mb-3">아이림 어린이집</h3>
-              <p class="text-sm text-brand-muted leading-relaxed">
-                공동육아의 고민에서 출발한 첫 사회기관. 다문화가정 아이들의 언어치료를 돕고, 가정과 교사가 함께 아이의 전인격을 사랑으로 돌봅니다.
-              </p>
-            </div>
-
-            <div class="p-8 border grid-border bg-brand-surface">
-              <span class="text-xs font-mono text-brand-muted block mb-3">05 / RIHA LETTER</span>
-              <h3 class="text-xl font-medium mb-3">리하레터</h3>
-              <p class="text-sm text-brand-muted leading-relaxed">
-                ‘그리스도의 향기’와 ‘편지’를 전하는 크리스천 굿즈 브랜드. 손글씨 묵상 이미지와 일상 속 굿즈를 통해 지친 사람들에게 위로와 복음의 메시지를 전합니다.
-              </p>
-            </div>
+          <!-- 버거입장 -->
+          <div class="p-8 border thin-border bg-white space-y-4">
+            <span class="font-mono text-xs text-mono-muted tracking-widest block">02 / BURGER IPJANG</span>
+            <h3 class="text-2xl font-bold text-mono-dark">버거입장</h3>
+            <p class="font-mono text-xs text-mono-campus font-semibold">“네가 어디를 가든지 하나님이 함께하시니라”</p>
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
+              햄버거집이 전무하던 천안 입장면에 지역 필요를 채우기 위해 2024년 4월 문을 연 수제버거집. 음대 오르간 전공자가 순종하여 창업했으며, 매일 아침 축복 기도로 손님을 환대합니다.
+            </p>
           </div>
+
+          <!-- 입장돈까스 -->
+          <div class="p-8 border thin-border bg-white space-y-4">
+            <span class="font-mono text-xs text-mono-muted tracking-widest block">03 / TONKATSU</span>
+            <h3 class="text-2xl font-bold text-mono-dark">입장돈까스</h3>
+            <p class="font-mono text-xs text-mono-campus font-semibold">“만드는 사람이 즐거워야 드시는 분도 행복합니다”</p>
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
+              10평 남짓한 시골 식당. 깨끗한 기름과 당일 판매 원칙을 지키며, 함께 일하는 동료들의 행복과 지역 주민에게 든든하고 따뜻한 한 끼의 안식을 선물합니다.
+            </p>
+          </div>
+
+          <!-- 아이림어린이집 -->
+          <div class="p-8 border thin-border bg-white space-y-4">
+            <span class="font-mono text-xs text-mono-muted tracking-widest block">04 / DAYCARE</span>
+            <h3 class="text-2xl font-bold text-mono-dark">아이림어린이집</h3>
+            <p class="font-mono text-xs text-mono-campus font-semibold">“더불어 함께 사랑을 배우는 생애 첫 사회”</p>
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
+              공동육아의 고민에서 출발해 폐원 위기의 어린이집을 인수해 시작된 보육 공동체. 다문화가정 원아에게 언어치료사를 연계하는 등 아이 한 명 한 명을 사랑으로 돌봅니다.
+            </p>
+          </div>
+
+          <!-- 리하레터 -->
+          <div class="p-8 border thin-border bg-white space-y-4">
+            <span class="font-mono text-xs text-mono-muted tracking-widest block">05 / RIHA LETTER</span>
+            <h3 class="text-2xl font-bold text-mono-dark">리하레터</h3>
+            <p class="font-mono text-xs text-mono-campus font-semibold">“그리스도의 향기(riha)와 편지(letter)를 전하다”</p>
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
+              원바디 캠퍼스 사역자가 자립 선교 재정을 위해 시작한 크리스천 디자인 굿즈 브랜드. 손글씨 묵상 메시지와 굿즈를 통해 일상의 위로와 복음을 전합니다.
+            </p>
+          </div>
+
         </div>
       </div>
     </section>
 
 
     <!-- ================================================================= -->
-    <!-- 04. VIEW: LIFE TOGETHER (더불어 사는 삶의 자리) -->
+    <!-- VIEW 4: LIFE TOGETHER (주거 & 마을)                               -->
     <!-- ================================================================= -->
     <section id="view-life" class="view-container">
-      <div class="border-b grid-border bg-brand-surface">
-        <div class="max-w-7xl mx-auto px-6 py-12 flex items-center justify-between">
-          <span class="text-xs font-mono text-brand-muted uppercase">(SECTION 04 / HOUSING & COMMUNITY)</span>
-          <button onclick="switchView('view-overview')" class="text-xs font-mono text-brand-dark hover:underline">← 홈으로 돌아가기</button>
+      <div class="border-b thin-border bg-mono-subtle/60 px-6 md:px-12 py-3 flex items-center justify-between text-xs font-mono">
+        <button onclick="switchView('view-overview')" class="text-mono-dark hover:underline flex items-center gap-1.5 font-medium">
+          <span>&larr;</span> <span>홈(전체 목차)으로 돌아가기</span>
+        </button>
+        <span class="text-mono-muted">SECTION: (03) LIFE TOGETHER</span>
+      </div>
+
+      <div class="border-b thin-border bg-white">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-16 md:py-24">
+          <span class="font-mono text-xs text-mono-muted tracking-[0.2em] uppercase mb-3">(SECTION — 03)</span>
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-mono-dark max-w-4xl mb-6 tracking-[-0.03em]">
+            더불어 사는 삶의 자리,<br>
+            <span class="text-mono-muted">집과 마을을 세우다.</span>
+          </h1>
+          <p class="text-sm sm:text-base text-mono-muted max-w-2xl leading-relaxed font-sans">
+            치솟는 집값과 주거 불안 앞에서, 원바디는 한 사람의 주거 문제를 공동체 전체의 책임으로 받아들였습니다. 
+            시간과 재정, 노동을 함께 모아 마을과 보금자리를 세워온 구체적인 실천입니다.
+          </p>
         </div>
       </div>
 
-      <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
-        <span class="text-xs font-mono text-brand-muted uppercase tracking-widest block mb-4">LIFE TOGETHER</span>
-        <h2 class="text-3xl md:text-5xl font-normal mb-8">“집을 함께 짓는 시간을 통해 한 사람의 짐을 함께 지는 법을 배웠습니다.”</h2>
-        <p class="text-base md:text-lg text-brand-muted max-w-3xl leading-relaxed mb-16">
-          치솟는 집값과 주거 불안 앞에서, 원바디는 한 사람의 주거 문제를 공동체 전체의 책임으로 받아들였습니다. 
-          시간과 재정, 노동을 함께 모아 마을과 보금자리를 세워온 구체적인 실천입니다.
-        </p>
-
-        <div class="space-y-16">
-          <div class="border grid-border bg-brand-surface p-8 md:p-12">
-            <span class="text-xs font-mono text-brand-muted block mb-2">01 / YEONGOK CENTER</span>
-            <h3 class="text-2xl font-medium mb-4">원바디 연곡센터</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
-              2명의 청년이 목조주택 기술을 배우고, 7명의 청년이 1~2년간 보수 없이 땀을 흘리며 직접 지어 올린 터전입니다. 5가정이 함께 거주할 수 있는 보금자리가 마련되었고, 지금까지 7가정이 거쳐 가며 5명의 새 생명이 태어났습니다. 집을 짓는 시간은 곧 '한 몸'이 되어가는 시간이었습니다.
-            </p>
-          </div>
-
-          <div class="border grid-border bg-brand-surface p-8 md:p-12">
-            <span class="text-xs font-mono text-brand-muted block mb-2">02 / HEEMANG DEOHAM VILLAGE</span>
-            <h3 class="text-2xl font-medium mb-4">희망더함빌리지 (16가구 마을)</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
-              한국해비타트 및 천안시와의 협력, 1,000여 명 자원봉사자의 손길로 성거읍에 조성된 16가구 단독주택 단지입니다. 결혼을 미루던 청년 부부들에게 안정된 삶의 터전을 열어주었으며, 현재 22명의 아이들이 마을 전체를 안전한 놀이터 삼아 이웃의 돌봄 속에서 자라나고 있습니다.
-            </p>
-          </div>
-
-          <div class="border grid-border bg-brand-surface p-8 md:p-12">
-            <span class="text-xs font-mono text-brand-muted block mb-2">03 / ONEBODY HOUSE</span>
-            <h3 class="text-2xl font-medium mb-4">원바디 하우스 (공동체 생활훈련)</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
-              먹고 자고 일하며 쉬는 일상의 질서를 공유하는 제자훈련의 현장입니다. 아침 말씀 묵상과 저녁 배려의 규칙을 지키며, 갈등 속에서 비난 대신 진솔한 대화와 용서를 배웁니다.
-            </p>
-          </div>
+      <!-- 3대 주거 공동체 -->
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-24 space-y-16">
+        
+        <div class="p-8 sm:p-12 border thin-border bg-white space-y-4">
+          <span class="font-mono text-xs text-mono-muted tracking-widest block">01 / YEONGOK CENTER</span>
+          <h3 class="text-2xl sm:text-3xl font-bold text-mono-dark">원바디 연곡센터</h3>
+          <p class="text-sm text-mono-muted leading-relaxed font-sans">
+            천안 시골 변두리에 땅을 구하고, 청년 7명이 2년간 무보수로 건축을 배워가며 직접 지은 공동체 하우스. 지금까지 신혼부부 7가정이 이곳을 거쳐갔고 5명의 아이가 태어났습니다. 집을 함께 지으며 ‘한 사람의 문제를 공동체가 함께 짊어지는 법’을 배웠습니다.
+          </p>
         </div>
+
+        <div class="p-8 sm:p-12 border thin-border bg-white space-y-4">
+          <span class="font-mono text-xs text-mono-muted tracking-widest block">02 / HEEMANG DEOHAM VILLAGE</span>
+          <h3 class="text-2xl sm:text-3xl font-bold text-mono-dark">희망더함빌리지 (성거읍 16가구 마을)</h3>
+          <p class="text-sm text-mono-muted leading-relaxed font-sans">
+            한국해비타트와 천안시, 1,000여 명 자원봉사자의 손길로 2024년 말 성거읍에 조성된 신혼부부 단독주택 단지입니다. 집과 집 사이 문턱을 낮추고, 22명의 아이들이 온 마을을 안전한 놀이터 삼아 함께 자라며 이웃이 가족이 되어가는 마을입니다.
+          </p>
+        </div>
+
+        <div class="p-8 sm:p-12 border thin-border bg-white space-y-4">
+          <span class="font-mono text-xs text-mono-muted tracking-widest block">03 / ONEBODY HOUSE</span>
+          <h3 class="text-2xl sm:text-3xl font-bold text-mono-dark">원바디 하우스 (공동체 생활훈련)</h3>
+          <p class="text-sm text-mono-muted leading-relaxed font-sans">
+            먹고 자고 일하며 쉬는 일상의 모든 순간을 공유하는 제자훈련 하우스. 아침 말씀 묵상과 절제된 일과를 지키며, 갈등이 생길 때 비난 대신 솔직한 대화와 용서를 배웁니다.
+          </p>
+        </div>
+
       </div>
     </section>
 
 
     <!-- ================================================================= -->
-    <!-- 05. VIEW: GATHERINGS & TRAINING (예배 & 훈련) -->
+    <!-- VIEW 5: GATHERINGS & WORSHIP (예배 & 훈련)                         -->
     <!-- ================================================================= -->
     <section id="view-gatherings" class="view-container">
-      <div class="border-b grid-border bg-brand-surface">
-        <div class="max-w-7xl mx-auto px-6 py-12 flex items-center justify-between">
-          <span class="text-xs font-mono text-brand-muted uppercase">(SECTION 05 / WORSHIP & TRAINING)</span>
-          <button onclick="switchView('view-overview')" class="text-xs font-mono text-brand-dark hover:underline">← 홈으로 돌아가기</button>
+      <div class="border-b thin-border bg-mono-subtle/60 px-6 md:px-12 py-3 flex items-center justify-between text-xs font-mono">
+        <button onclick="switchView('view-overview')" class="text-mono-dark hover:underline flex items-center gap-1.5 font-medium">
+          <span>&larr;</span> <span>홈(전체 목차)으로 돌아가기</span>
+        </button>
+        <span class="text-mono-muted">SECTION: (04) GATHERINGS</span>
+      </div>
+
+      <div class="border-b thin-border bg-white">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-16 md:py-24">
+          <span class="font-mono text-xs text-mono-muted tracking-[0.2em] uppercase mb-3">(SECTION — 04)</span>
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-mono-dark max-w-4xl mb-6 tracking-[-0.03em]">
+            예배와 훈련,<br>
+            <span class="text-mono-muted">성찬과 안식의 여정</span>
+          </h1>
+          <p class="text-sm sm:text-base text-mono-muted max-w-2xl leading-relaxed font-sans">
+            만찬예배(Dinner Church)로 모이는 원바디처치와 지상명령에 순종하는 선교적 훈련(MCT), 쉼과 회복을 누리는 안식 컨퍼런스까지 우리가 함께 걷는 자리들입니다.
+          </p>
         </div>
       </div>
 
-      <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
-        <span class="text-xs font-mono text-brand-muted uppercase tracking-widest block mb-4">OUR GATHERINGS & TRAINING</span>
-        <h2 class="text-3xl md:text-5xl font-normal mb-8">“예배와 식탁, 그리고 삶으로 드려지는 훈련”</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          <div class="p-8 border grid-border bg-brand-surface">
-            <span class="text-xs font-mono text-brand-muted block mb-3">CHURCH</span>
-            <h3 class="text-xl font-medium mb-3">원바디처치 (디너처치·만찬예배)</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
-              주일 성찬과 애찬(공동식사)을 통해 십자가의 복음을 기억하고 서로 사랑함으로 하나 되어 안식을 누립니다. 주일에 채워진 은혜와 힘으로 다시 세상 속 삶의 자리로 나아갑니다.
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <div class="p-8 border thin-border bg-white space-y-4">
+            <span class="font-mono text-xs text-mono-muted tracking-widest block">CHURCH</span>
+            <h3 class="text-2xl font-bold text-mono-dark">원바디처치 (만찬예배)</h3>
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
+              천안 대학지역에 위치하여 깊은 찬양 예배와 말씀, 성찬과 애찬을 나누는 디너처치입니다. 십계명의 안식일을 거룩히 구별하여 우리의 일을 멈추고 하나님께 집중하여 한 주간 세상으로 나아갈 영적인 힘을 얻습니다. (매월 1회 성찬 예식 &bull; 매주 애찬 식사)
             </p>
           </div>
 
-          <div class="p-8 border grid-border bg-brand-surface">
-            <span class="text-xs font-mono text-brand-muted block mb-3">TRAINING</span>
-            <h3 class="text-xl font-medium mb-3">선교적 공동체 훈련 (MCT)</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
-              EAT · WORK · GROW 3대 가치를 바탕으로 말씀·기도·학습·노동·선교·안식이 삶의 건강한 리듬이 되도록 훈련하며, 제자 삼는 제자로 자라갑니다. (매주 목요일 저녁 8시)
+          <div class="p-8 border thin-border bg-white space-y-4">
+            <span class="font-mono text-xs text-mono-muted tracking-widest block">TRAINING</span>
+            <h3 class="text-2xl font-bold text-mono-dark">선교적 공동체 훈련 (MCT)</h3>
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
+              EAT, WORK, GROW의 가치를 기반으로 제자 삼는 제자로 세워지는 훈련입니다. 말씀·기도·학습·노동·선교·안식이 삶의 리듬이 되어 모든 삶의 자리에서 선교적 삶을 살아가도록 훈련합니다. (매주 목요일 저녁 8시)
             </p>
           </div>
 
-          <div class="p-8 border grid-border bg-brand-surface">
-            <span class="text-xs font-mono text-brand-muted block mb-3">DISCIPLESHIP</span>
-            <h3 class="text-xl font-medium mb-3">공동체 영성훈련</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
-              말이 아닌 삶으로 예수님을 닮아가고자 하는 청년들이 1년 동안 하나님을 사랑하고 서로를 사랑하는 법을 몸으로 배우는 여정입니다.
+          <div class="p-8 border thin-border bg-white space-y-4">
+            <span class="font-mono text-xs text-mono-muted tracking-widest block">SPIRITUAL JOURNEY</span>
+            <h3 class="text-2xl font-bold text-mono-dark">공동체 영성훈련</h3>
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
+              말이 아닌 삶으로 예수님을 닮아가고자 1년 동안 하나님을 사랑하고 서로를 사랑하는 법을 몸으로 배우는 여정입니다. (학기 중 월~수 17:00)
             </p>
           </div>
 
-          <div class="p-8 border grid-border bg-brand-surface">
-            <span class="text-xs font-mono text-brand-muted block mb-3">CONFERENCE & JOURNEY</span>
-            <h3 class="text-xl font-medium mb-3">안식 컨퍼런스 & 평화의 여정</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
-              여름과 겨울 일상을 멈추고 자연 속에서 예배와 쉼을 누리는 3박 4일 안식 컨퍼런스, 역사적 인물들의 유산을 탐방하며 사랑을 배우는 평화와 화해의 여정을 이어갑니다.
+          <div class="p-8 border thin-border bg-white space-y-4">
+            <span class="font-mono text-xs text-mono-muted tracking-widest block">RETREAT &amp; JUSTICE</span>
+            <h3 class="text-2xl font-bold text-mono-dark">안식 컨퍼런스 &amp; 평화의 여정</h3>
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
+              자연 속에서 쉼과 예배, 축제를 누리며 몸과 마음, 영혼의 전인적 회복을 경험하는 3박 4일 안식 컨퍼런스와 화해를 배워가는 평화의 여정을 진행합니다.
             </p>
           </div>
+
         </div>
       </div>
     </section>
 
 
     <!-- ================================================================= -->
-    <!-- 06. VIEW: STORIES (8인의 이야기) -->
+    <!-- VIEW 6: STORIES (8인의 이야기)                                    -->
     <!-- ================================================================= -->
     <section id="view-stories" class="view-container">
-      <div class="border-b grid-border bg-brand-surface">
-        <div class="max-w-7xl mx-auto px-6 py-12 flex items-center justify-between">
-          <span class="text-xs font-mono text-brand-muted uppercase">(SECTION 06 / TESTIMONIES)</span>
-          <button onclick="switchView('view-overview')" class="text-xs font-mono text-brand-dark hover:underline">← 홈으로 돌아가기</button>
+      <div class="border-b thin-border bg-mono-subtle/60 px-6 md:px-12 py-3 flex items-center justify-between text-xs font-mono">
+        <button onclick="switchView('view-overview')" class="text-mono-dark hover:underline flex items-center gap-1.5 font-medium">
+          <span>&larr;</span> <span>홈(전체 목차)으로 돌아가기</span>
+        </button>
+        <span class="text-mono-muted">SECTION: (05) 8 VOICES</span>
+      </div>
+
+      <div class="border-b thin-border bg-white">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-16 md:py-24">
+          <span class="font-mono text-xs text-mono-muted tracking-[0.2em] uppercase block mb-3">(SECTION — 05)</span>
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-mono-dark max-w-4xl mb-6 tracking-[-0.03em]">
+            공동체와 함께한<br>
+            <span class="text-mono-muted">8인의 삶의 이야기들</span>
+          </h1>
+          <p class="text-sm sm:text-base text-mono-muted max-w-2xl leading-relaxed font-sans">
+            예수님을 몰랐던 청년이 주님을 만나고, 일터와 가정, 공동체 속에서 제자로 살아낸 진솔하고 따뜻한 증언입니다.
+          </p>
         </div>
       </div>
 
-      <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
-        <span class="text-xs font-mono text-brand-muted uppercase tracking-widest block mb-4">OUR STORIES</span>
-        <h2 class="text-3xl md:text-5xl font-normal mb-8">“공동체와 함께 살아낸 8인의 삶의 고백”</h2>
-        <p class="text-base md:text-lg text-brand-muted max-w-3xl leading-relaxed mb-16">
-          완벽하지 않지만 예수님의 가르침을 따라 서로 사랑하기를 힘써온 지체들의 솔직한 기록입니다.
-        </p>
-
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-20">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="p-8 border grid-border bg-brand-surface">
-            <div class="text-xs font-mono text-brand-muted mb-2">01 / 원바디 하우스</div>
-            <h3 class="text-lg font-medium mb-3">이광희 “사랑할 수 없는 사람을 사랑하는 법을 배우다”</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
+          
+          <div class="p-8 sm:p-10 border thin-border bg-white space-y-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between font-mono text-xs text-mono-muted border-b thin-border pb-3">
+              <span>01 / 이광희</span>
+              <span>원바디 하우스</span>
+            </div>
+            <h3 class="text-xl font-bold text-mono-dark leading-snug">“사랑할 수 없는 사람을 사랑하는 법을 배우다”</h3>
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
               신앙도 없이 하우스에 들어와 8명의 형제들과 부딪히며 살았습니다. 형제를 내 기준으로 판단하지 않고 진정으로 사랑하려 다가갈 때 복음이 삶에 스며들었습니다.
             </p>
           </div>
 
-          <div class="p-8 border grid-border bg-brand-surface">
-            <div class="text-xs font-mono text-brand-muted mb-2">02 / 나사렛대 캠퍼스</div>
-            <h3 class="text-lg font-medium mb-3">김현수 “캠퍼스에서 처음 하나님을 만나다”</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
+          <div class="p-8 sm:p-10 border thin-border bg-white space-y-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between font-mono text-xs text-mono-muted border-b thin-border pb-3">
+              <span>02 / 김현수</span>
+              <span>나사렛대 캠퍼스</span>
+            </div>
+            <h3 class="text-xl font-bold text-mono-dark leading-snug">“캠퍼스에서 처음 하나님을 만나다”</h3>
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
               교회를 다니지 않던 제가 조건 없는 환대 속에서 하나님을 믿게 되었습니다. 이제는 매일 오가던 학교를 위해 학과 기도모임을 개척하고 있습니다.
             </p>
           </div>
 
-          <div class="p-8 border grid-border bg-brand-surface">
-            <div class="text-xs font-mono text-brand-muted mb-2">03 / 유학생 사역</div>
-            <h3 class="text-lg font-medium mb-3">채수찬 “외국인 유학생들의 친구가 되다”</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
+          <div class="p-8 sm:p-10 border thin-border bg-white space-y-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between font-mono text-xs text-mono-muted border-b thin-border pb-3">
+              <span>03 / 채수찬</span>
+              <span>유학생 사역</span>
+            </div>
+            <h3 class="text-xl font-bold text-mono-dark leading-snug">“외국인 유학생들의 친구가 되다”</h3>
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
               한국 친구가 한 명도 없는 유학생들에게 비타500을 건네며 친구가 되었습니다. 네팔, 베트남, 우즈베크 청년들과 서로 다른 언어로 한 하나님을 예배합니다.
             </p>
           </div>
 
-          <div class="p-8 border grid-border bg-brand-surface">
-            <div class="text-xs font-mono text-brand-muted mb-2">04 / 버거입장 대표</div>
-            <h3 class="text-lg font-medium mb-3">최동아 “음대 졸업생이 햄버거집을 시작한 이유”</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
+          <div class="p-8 sm:p-10 border thin-border bg-white space-y-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between font-mono text-xs text-mono-muted border-b thin-border pb-3">
+              <span>04 / 최동아</span>
+              <span>버거입장 대표</span>
+            </div>
+            <h3 class="text-xl font-bold text-mono-dark leading-snug">“음대 졸업생이 햄버거집을 시작한 이유”</h3>
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
               음악을 전공했지만 햄버거집이 없는 시골 동네의 필요를 채우기 위해 뛰어들었습니다. 작은 주방 노동의 현장에서 주님을 예배하는 깊은 기쁨을 맛봅니다.
             </p>
           </div>
 
-          <div class="p-8 border grid-border bg-brand-surface">
-            <div class="text-xs font-mono text-brand-muted mb-2">05 / 어린이집 교사</div>
-            <h3 class="text-lg font-medium mb-3">전예나 “일터에서 혼자가 아니라는 것”</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
+          <div class="p-8 sm:p-10 border thin-border bg-white space-y-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between font-mono text-xs text-mono-muted border-b thin-border pb-3">
+              <span>05 / 전예나</span>
+              <span>어린이집 교사</span>
+            </div>
+            <h3 class="text-xl font-bold text-mono-dark leading-snug">“일터에서 혼자가 아니라는 것”</h3>
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
               실수와 자책으로 무너지던 5년 전, 함께 울며 기도해 준 직장인 공동체가 있었습니다. 일터는 나를 증명하는 곳이 아니라 주님이 보내신 사명의 자리입니다.
             </p>
           </div>
 
-          <div class="p-8 border grid-border bg-brand-surface">
-            <div class="text-xs font-mono text-brand-muted mb-2">06 / 가정 커뮤니티</div>
-            <h3 class="text-lg font-medium mb-3">김성미 “소통을 처음부터 다시 배우다”</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
+          <div class="p-8 sm:p-10 border thin-border bg-white space-y-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between font-mono text-xs text-mono-muted border-b thin-border pb-3">
+              <span>06 / 김성미</span>
+              <span>가정 커뮤니티</span>
+            </div>
+            <h3 class="text-xl font-bold text-mono-dark leading-snug">“소통을 처음부터 다시 배우다”</h3>
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
               성격 차이로 다투던 신혼 초, 건강한 공동체 가정들의 모습을 보며 걸음마를 배우듯 소통을 익혔습니다. 다름은 이제 서로를 깊이 이해하는 통로입니다.
             </p>
           </div>
 
-          <div class="p-8 border grid-border bg-brand-surface">
-            <div class="text-xs font-mono text-brand-muted mb-2">07 / 영성훈련</div>
-            <h3 class="text-lg font-medium mb-3">유경수 “자기부인과 십자가의 배움”</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
+          <div class="p-8 sm:p-10 border thin-border bg-white space-y-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between font-mono text-xs text-mono-muted border-b thin-border pb-3">
+              <span>07 / 유경수</span>
+              <span>영성훈련</span>
+            </div>
+            <h3 class="text-xl font-bold text-mono-dark leading-snug">“자기부인과 십자가의 배움”</h3>
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
               내 선택을 하나님께 설득하던 신앙에서 벗어나, 내 연약함을 솔직히 공동체 앞에 내어놓고 함께 기도받으며 그리스도를 따르는 법을 배웠습니다.
             </p>
           </div>
 
-          <div class="p-8 border grid-border bg-brand-surface">
-            <div class="text-xs font-mono text-brand-muted mb-2">08 / 원바디처치</div>
-            <h3 class="text-lg font-medium mb-3">이주호 “직업군인 자아를 내려놓고 주님을 만나다”</h3>
-            <p class="text-sm text-brand-muted leading-relaxed">
+          <div class="p-8 sm:p-10 border thin-border bg-white space-y-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between font-mono text-xs text-mono-muted border-b thin-border pb-3">
+              <span>08 / 이주호</span>
+              <span>원바디처치</span>
+            </div>
+            <h3 class="text-xl font-bold text-mono-dark leading-snug">“직업군인 자아를 내려놓고 주님을 만나다”</h3>
+            <p class="text-sm text-mono-muted leading-relaxed font-sans">
               스스로 강하다 믿던 삶에서 자기부인과 양보를 배웠습니다. 폴란드 단기 건축선교를 다녀오며 하나님이 살아 계심을 온몸으로 확신하게 되었습니다.
             </p>
           </div>
+
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="border-t grid-border bg-brand-dark text-white py-16">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 pb-12 border-b border-white/10">
-        <div>
-          <!-- 푸터용 로고 이미지 (반전 필터 적용으로 선명한 흰색 렌더링) -->
-          <img src="원바디로고 검정 무배경.png" alt="onebody COMMUNITY & CHURCH" class="h-8 md:h-10 object-contain invert-white mb-4" onerror="this.style.display='none'; document.getElementById('footer-fallback-text').style.display='block';">
-          <span id="footer-fallback-text" class="hidden text-xl font-bold tracking-tight mb-4">onebody</span>
-          <p class="text-xs text-white/50 max-w-md leading-relaxed">
-            서로 사랑함으로 세상 속에 존재하는 안식공동체<br>
-            캠퍼스 · 비즈니스 · 주거 · 교육 · 교회
+  <!-- 3. FOOTER -->
+  <footer class="border-t thin-border bg-mono-dark text-white py-16">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-14 border-b border-white/10">
+        
+        <div class="md:col-span-5 space-y-4">
+          <!-- Vector Logo Inverted White in Footer -->
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 54" class="h-10 w-auto text-white">
+              <text x="0" y="34" font-family="'Cormorant Garamond', 'Times New Roman', serif" font-size="40" font-weight="700" letter-spacing="-1.2" fill="#FFFFFF">onebody</text>
+              <text x="2" y="49" font-family="'JetBrains Mono', 'Pretendard', sans-serif" font-size="8.5" font-weight="600" letter-spacing="3.2" fill="#AAAAAA">COMMUNITY &amp; CHURCH</text>
+            </svg>
+          </div>
+          <p class="italic text-sm text-white/70 max-w-sm">
+            “서로 사랑함으로 세상 속에 존재하는 안식공동체”
           </p>
+          <div class="font-mono text-xs text-white/50 space-y-1">
+            <p>EAT &bull; WORK &bull; GROW</p>
+            <p>천안 연곡센터 &bull; 성거 희망더함빌리지 &bull; 원바디처치</p>
+            <p>사무국: 010-8245-1090</p>
+          </div>
         </div>
-        <div class="flex flex-wrap gap-6 text-xs font-mono text-white/70">
-          <a href="javascript:void(0)" onclick="switchView('view-overview')" class="hover:text-white">OVERVIEW</a>
-          <a href="javascript:void(0)" onclick="switchView('view-campus')" class="hover:text-white">CAMPUS</a>
-          <a href="javascript:void(0)" onclick="switchView('view-business')" class="hover:text-white">BUSINESS</a>
-          <a href="javascript:void(0)" onclick="switchView('view-life')" class="hover:text-white">HOUSING</a>
-          <a href="https://go.missionfund.org/onebodycampusmission" target="_blank" rel="noopener noreferrer" class="text-brand-campus hover:underline">CAMPUS DONATION ↗</a>
+
+        <div class="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8 font-mono text-xs">
+          <div class="space-y-3">
+            <span class="text-white/40 tracking-widest block font-semibold">[사역과 삶의 자리]</span>
+            <ul class="space-y-2 text-white/80">
+              <li><button onclick="switchView('view-overview')" class="hover:underline text-left">01. 개요 및 비전</button></li>
+              <li><button onclick="switchView('view-campus')" class="hover:underline text-left">02. 캠퍼스 커뮤니티</button></li>
+              <li><button onclick="switchView('view-business')" class="hover:underline text-left">03. 비즈니스 &amp; 일터</button></li>
+              <li><button onclick="switchView('view-life')" class="hover:underline text-left">04. 주거 &amp; 삶의 자리</button></li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <span class="text-white/40 tracking-widest block font-semibold">[예배와 이야기]</span>
+            <ul class="space-y-2 text-white/80">
+              <li><button onclick="switchView('view-gatherings')" class="hover:underline text-left">05. 예배 &amp; 훈련 모임</button></li>
+              <li><button onclick="switchView('view-stories')" class="hover:underline text-left">06. 8인의 이야기</button></li>
+              <li><a href="https://go.missionfund.org/onebodycampusmission" target="_blank" rel="noopener noreferrer" class="text-mono-campus font-semibold hover:underline block">&rarr; 캠퍼스 미션펀드 후원 ↗</a></li>
+            </ul>
+          </div>
+          <div class="space-y-3 col-span-2 sm:col-span-1">
+            <span class="text-white/40 tracking-widest block font-semibold">[함께하는 사업]</span>
+            <p class="text-white/60 leading-relaxed">
+              원바디 빌더<br>
+              버거입장<br>
+              입장돈까스<br>
+              아이림어린이집<br>
+              리하레터
+            </p>
+          </div>
         </div>
+
       </div>
-      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-[11px] font-mono text-white/40 gap-4">
-        <div>© ONEBODY COMMUNITY & CHURCH. ALL RIGHTS RESERVED.</div>
-        <div>EAT · WORK · GROW</div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-baseline justify-between font-mono text-[11px] text-white/40 gap-4">
+        <div>&copy; 2026 ONE BODY COMMUNITY &amp; CHURCH. ALL RIGHTS RESERVED.</div>
+        <div>DESIGNED WITH BYMONOLOG EDITORIAL ESSENCE.</div>
       </div>
     </div>
   </footer>
 
-  <!-- SCRIPT -->
+  <!-- JAVASCRIPT LOGIC -->
   <script>
     function switchView(viewId) {
       const views = document.querySelectorAll('.view-container');
       views.forEach(v => v.classList.remove('active'));
+
       const target = document.getElementById(viewId);
       if (target) {
         target.classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
+
+      // Update Top Nav Styling
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        if (link.dataset.view === viewId) {
+          link.classList.add('text-mono-dark', 'font-semibold', 'underline');
+          link.classList.remove('text-mono-muted');
+        } else {
+          link.classList.remove('text-mono-dark', 'font-semibold', 'underline');
+          link.classList.add('text-mono-muted');
+        }
+      });
+
+      // Show/Hide "Home Return" Button
+      const homeReturnBtn = document.getElementById('homeReturnBtn');
+      if (homeReturnBtn) {
+        if (viewId === 'view-overview') {
+          homeReturnBtn.classList.add('hidden');
+          homeReturnBtn.classList.remove('inline-flex');
+        } else {
+          homeReturnBtn.classList.remove('hidden');
+          homeReturnBtn.classList.add('inline-flex');
+        }
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function toggleMobileMenu() {
-      const menu = document.getElementById('mobile-menu');
+      const menu = document.getElementById('mobileMenu');
       menu.classList.toggle('hidden');
     }
   </script>
