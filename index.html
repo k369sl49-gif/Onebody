@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ONE BODY — Community &amp; Church</title>
   
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Pretendard Font & Typography Accents -->
+  <!-- Pretendard Font & Google Fonts -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,14 +20,14 @@
         extend: {
           colors: {
             mono: {
-              bg: '#F5F5F0',       /* bymonolog 특유의 웜 오프화이트/크림 베이스 */
+              bg: '#F5F5F0',
               surface: '#FFFFFF',
               subtle: '#EAEAE2',
-              line: '#D8D8CF',     /* 1px 정밀 보더 라인 */
-              dark: '#121210',     /* 잉크 블랙 */
-              muted: '#6E6E66',    /* 차분한 보조 텍스트 */
-              campus: '#D9532F',   /* 캠퍼스 미션 테라코타 오렌지 */
-              sage: '#2C4A3E',     /* 딥 포레스트 그린 */
+              line: '#D8D8CF',
+              dark: '#121210',
+              muted: '#6E6E66',
+              campus: '#D9532F',
+              sage: '#2C4A3E',
               olive: '#4F583D'
             }
           },
@@ -77,11 +77,11 @@
 </head>
 <body class="min-h-screen flex flex-col font-sans break-keep leading-relaxed text-mono-dark">
 
-  <!-- 1. HEADER (bymonolog style with Official Logo) -->
+  <!-- 1. HEADER -->
   <header class="sticky top-0 z-40 bg-mono-bg/95 backdrop-blur-md border-b thin-border">
     <div class="max-w-[1600px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
       
-      <!-- Logo: Vector Representation of 'onebody COMMUNITY & CHURCH' -->
+      <!-- Logo -->
       <a href="javascript:void(0)" onclick="switchView('view-overview')" class="flex items-center group py-1" title="ONE BODY — Community & Church">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 54" class="h-9 w-auto text-mono-dark transition-opacity group-hover:opacity-75">
           <text x="0" y="34" font-family="'Cormorant Garamond', 'Times New Roman', serif" font-size="40" font-weight="700" letter-spacing="-1.2" fill="currentColor">onebody</text>
@@ -101,12 +101,9 @@
 
       <!-- Sub Actions & Mobile Trigger -->
       <div class="flex items-center gap-3">
-        <!-- Return Home Button (appears when viewing sub-pages) -->
         <button id="homeReturnBtn" onclick="switchView('view-overview')" class="hidden items-center gap-1.5 px-3 py-1.5 border thin-border text-mono-dark font-mono text-xs hover:bg-white transition-colors">
           <span>&larr;</span> <span>HOME</span>
         </button>
-
-        <!-- Mobile Menu Toggle -->
         <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-mono-dark font-mono text-xs border thin-border">
           MENU
         </button>
@@ -128,15 +125,12 @@
   <!-- MAIN APP VIEWS -->
   <main class="flex-grow">
 
-    <!-- ================================================================= -->
-    <!-- VIEW 1: OVERVIEW (MAIN HOME)                                      -->
-    <!-- ================================================================= -->
+    <!-- VIEW 1: OVERVIEW -->
     <section id="view-overview" class="view-container active">
       
-      <!-- HERO STATEMENT (bymonolog layout) -->
+      <!-- HERO STATEMENT -->
       <div class="border-b thin-border">
         <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-16 md:py-28">
-          
           <div class="flex items-center justify-between mb-8">
             <span class="font-mono text-xs text-mono-muted tracking-[0.2em] uppercase">
               (VISION &amp; MISSION — 01)
@@ -166,7 +160,6 @@
               </p>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -184,7 +177,7 @@
         </div>
       </div>
 
-      <!-- 3 CORE PILLARS: EAT · WORK · GROW (한 줄 정렬 완료) -->
+      <!-- 3 CORE PILLARS: EAT · WORK · GROW -->
       <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-24">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
@@ -204,7 +197,7 @@
             <h3 class="text-3xl font-bold text-mono-dark">EAT</h3>
             <p class="font-mono text-xs text-mono-campus tracking-wider font-semibold">서로를 먹이며 한 몸으로 세워간다</p>
             
-            <div class="img-slot aspect-[4/3] border thin-border relative group" data-img-id="PILLAR_EAT">
+            <div class="img-slot aspect-[4/3] border thin-border relative group">
               <img 
                 src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=900&q=80" 
                 alt="함께하는 식탁 교제" 
@@ -226,7 +219,7 @@
             <h3 class="text-3xl font-bold text-mono-dark">WORK</h3>
             <p class="font-mono text-xs text-mono-campus tracking-wider font-semibold">세상 속에서 함께 일하며 선교한다</p>
             
-            <div class="img-slot aspect-[4/3] border thin-border relative group" data-img-id="PILLAR_WORK">
+            <div class="img-slot aspect-[4/3] border thin-border relative group">
               <img 
                 src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80" 
                 alt="목공과 건축 노동의 현장" 
@@ -248,7 +241,7 @@
             <h3 class="text-3xl font-bold text-mono-dark">GROW</h3>
             <p class="font-mono text-xs text-mono-campus tracking-wider font-semibold">사랑 안에서 함께 자란다</p>
             
-            <div class="img-slot aspect-[4/3] border thin-border relative group" data-img-id="PILLAR_GROW">
+            <div class="img-slot aspect-[4/3] border thin-border relative group">
               <img 
                 src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80" 
                 alt="함께 성장하는 청년들" 
@@ -267,7 +260,7 @@
         </div>
       </div>
 
-      <!-- CHRONOLOGY TIMELINE (1.0 -> 2.0 -> NOW) -->
+      <!-- CHRONOLOGY TIMELINE -->
       <div class="border-t thin-border bg-white">
         <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-24">
           <div class="mb-16">
@@ -321,7 +314,7 @@
         </div>
       </div>
 
-      <!-- IN-PAGE MAIN NAVIGATION CARDS WITH RELAXED EDITORIAL PHOTO SLOTS (PLACED AT VERY BOTTOM) -->
+      <!-- IN-PAGE MAIN DIRECTORY -->
       <div class="border-t thin-border bg-mono-bg">
         <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-20 md:py-28">
           <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
@@ -332,13 +325,12 @@
             <p class="font-mono text-xs text-mono-muted mt-3 md:mt-0">원하시는 영역을 선택하시면 각 커뮤니티의 상세 페이지로 바로 이동합니다.</p>
           </div>
 
-          <!-- 5 Editorial Photo Navigation Cards Grid with breathing room -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <!-- 01. 캠퍼스 커뮤니티 -->
+            <!-- 01. CAMPUS -->
             <div onclick="switchView('view-campus')" class="group cursor-pointer bg-white border thin-border hover:border-mono-dark transition-all flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md">
               <div>
-                <div class="img-slot aspect-[16/10] border-b thin-border relative overflow-hidden" data-img-id="EXPLORE_CAMPUS">
+                <div class="img-slot aspect-[16/10] border-b thin-border relative overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80" 
                     alt="캠퍼스 커뮤니티" 
@@ -363,10 +355,10 @@
               </div>
             </div>
 
-            <!-- 02. 비즈니스 & 일터 -->
+            <!-- 02. BUSINESS -->
             <div onclick="switchView('view-business')" class="group cursor-pointer bg-white border thin-border hover:border-mono-dark transition-all flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md">
               <div>
-                <div class="img-slot aspect-[16/10] border-b thin-border relative overflow-hidden" data-img-id="EXPLORE_BUSINESS">
+                <div class="img-slot aspect-[16/10] border-b thin-border relative overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80" 
                     alt="비즈니스 커뮤니티" 
@@ -391,10 +383,10 @@
               </div>
             </div>
 
-            <!-- 03. 삶의 자리 (주거/마을) -->
+            <!-- 03. HOUSING -->
             <div onclick="switchView('view-life')" class="group cursor-pointer bg-white border thin-border hover:border-mono-dark transition-all flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md">
               <div>
-                <div class="img-slot aspect-[16/10] border-b thin-border relative overflow-hidden" data-img-id="EXPLORE_LIFE">
+                <div class="img-slot aspect-[16/10] border-b thin-border relative overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80" 
                     alt="삶의 자리 (주거와 마을)" 
@@ -419,10 +411,10 @@
               </div>
             </div>
 
-            <!-- 04. 예배 & 훈련 -->
+            <!-- 04. GATHERINGS -->
             <div onclick="switchView('view-gatherings')" class="group cursor-pointer bg-white border thin-border hover:border-mono-dark transition-all flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md">
               <div>
-                <div class="img-slot aspect-[16/10] border-b thin-border relative overflow-hidden" data-img-id="EXPLORE_GATHERINGS">
+                <div class="img-slot aspect-[16/10] border-b thin-border relative overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" 
                     alt="예배와 훈련 모임" 
@@ -447,7 +439,7 @@
               </div>
             </div>
 
-            <!-- 05. 삶의 이야기들 (텍스트 중심의 정제된 카드) -->
+            <!-- 05. STORIES -->
             <div onclick="switchView('view-stories')" class="group cursor-pointer bg-white border thin-border hover:border-mono-dark transition-all flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md md:col-span-2 lg:col-span-2 p-8 sm:p-10">
               <div class="space-y-4">
                 <div class="flex items-center justify-between text-xs font-mono text-mono-muted">
@@ -477,13 +469,8 @@
 
     </section>
 
-
-    <!-- ================================================================= -->
-    <!-- VIEW 2: CAMPUS COMMUNITY (캠퍼스 전용 섹션)                       -->
-    <!-- ================================================================= -->
+    <!-- VIEW 2: CAMPUS -->
     <section id="view-campus" class="view-container">
-      
-      <!-- Sticky Return Bar -->
       <div class="border-b thin-border bg-mono-subtle/60 px-6 md:px-12 py-3 flex items-center justify-between text-xs font-mono">
         <button onclick="switchView('view-overview')" class="text-mono-dark hover:underline flex items-center gap-1.5 font-medium">
           <span>&larr;</span> <span>홈(전체 목차)으로 돌아가기</span>
@@ -491,7 +478,6 @@
         <span class="text-mono-muted">SECTION: (01) CAMPUS</span>
       </div>
 
-      <!-- Campus Hero -->
       <div class="border-b thin-border bg-white">
         <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-16 md:py-24">
           <div class="inline-flex items-center gap-2 px-3 py-1 border border-mono-campus text-mono-campus font-mono text-xs mb-6">
@@ -511,13 +497,10 @@
         </div>
       </div>
 
-      <!-- Campus Ministries Grid -->
       <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-24 border-b thin-border">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          
-          <!-- Pillar 1 -->
           <div class="space-y-6">
-            <div class="img-slot aspect-[16/10] border thin-border relative group" data-img-id="CAMPUS_OUTREACH">
+            <div class="img-slot aspect-[16/10] border thin-border relative group">
               <img 
                 src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80" 
                 alt="캠퍼스 잔디밭 모임" 
@@ -533,9 +516,8 @@
             </div>
           </div>
 
-          <!-- Pillar 2 -->
           <div class="space-y-6">
-            <div class="img-slot aspect-[16/10] border thin-border relative group" data-img-id="CAMPUS_TRAINING">
+            <div class="img-slot aspect-[16/10] border thin-border relative group">
               <img 
                 src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" 
                 alt="대학생 비즈니스 멘토링" 
@@ -551,9 +533,8 @@
             </div>
           </div>
 
-          <!-- Pillar 3 -->
           <div class="space-y-6">
-            <div class="img-slot aspect-[16/10] border thin-border relative group" data-img-id="CAMPUS_DIASPORA">
+            <div class="img-slot aspect-[16/10] border thin-border relative group">
               <img 
                 src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80" 
                 alt="글로벌 유학생 커뮤니티" 
@@ -568,11 +549,10 @@
               </p>
             </div>
           </div>
-
         </div>
       </div>
 
-      <!-- CAMPUS MISSION DEDICATED DONATION (AT VERY BOTTOM) -->
+      <!-- CAMPUS MISSION DONATION -->
       <div class="bg-white py-20 px-6 md:px-12">
         <div class="max-w-3xl mx-auto border-2 border-mono-campus bg-mono-bg p-8 sm:p-12 relative shadow-sm">
           <div class="font-mono text-xs text-mono-campus tracking-widest uppercase mb-2">
@@ -590,7 +570,7 @@
 
             <div class="p-5 bg-white border thin-border space-y-3">
               <p><strong>1. 캠퍼스 복음화:</strong> 한 사람에게 복음을 전하고 예수님의 제자로 함께 살아갑니다. 각 학과에 기도모임을 세우고 연결하여, 캠퍼스 전체에 복음이 흘러가는 움직임을 만들어갑니다.</p>
-              <p><strong>2. 비즈니스 선교훈련:</strong> 캠퍼스 4년, 일터 40년. 캠퍼스에서부터 실제 일터와 비즈니스 현장의 사람들을 만나며, 자신의 일과 비즈니스를 통해 하나님 나라의 운동에 참여하도록 훈련합니다. 캠퍼스에서 시작된 제자도가 졸업 이후의 일터와 삶으로 이어지도록 함께합니다.</p>
+              <p><strong>2. 비즈니스 선교훈련:</strong> 캠퍼스 4년, 일터 40년. 캠퍼스에서부터 실제 일터와 비즈니스 현장의 사람들을 만나며, 자신의 일과 비즈니스를 통해 하나님 나라의 운동에 참여하도록 훈련합니다.</p>
             </div>
 
             <p>
@@ -603,7 +583,6 @@
             </div>
           </div>
 
-          <!-- 미션펀드 공식 후원 링크 버튼 (다이렉트 연결) -->
           <a 
             href="https://go.missionfund.org/onebodycampusmission" 
             target="_blank" 
@@ -615,13 +594,9 @@
           </a>
         </div>
       </div>
-
     </section>
 
-
-    <!-- ================================================================= -->
-    <!-- VIEW 3: BUSINESS & WORK (일터 & 비즈니스)                         -->
-    <!-- ================================================================= -->
+    <!-- VIEW 3: BUSINESS -->
     <section id="view-business" class="view-container">
       <div class="border-b thin-border bg-mono-subtle/60 px-6 md:px-12 py-3 flex items-center justify-between text-xs font-mono">
         <button onclick="switchView('view-overview')" class="text-mono-dark hover:underline flex items-center gap-1.5 font-medium">
@@ -644,7 +619,6 @@
         </div>
       </div>
 
-      <!-- 5대 비즈니스 현장 프로젝트 -->
       <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-24">
         <div class="mb-16">
           <span class="font-mono text-xs text-mono-muted tracking-[0.2em] uppercase block mb-2">(FIVE VENTURES)</span>
@@ -652,8 +626,6 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
-          <!-- 원바디 빌더 -->
           <div class="p-8 border thin-border bg-white space-y-4">
             <span class="font-mono text-xs text-mono-muted tracking-widest block">01 / BUILDER</span>
             <h3 class="text-2xl font-bold text-mono-dark">원바디 빌더</h3>
@@ -663,7 +635,6 @@
             </p>
           </div>
 
-          <!-- 버거입장 -->
           <div class="p-8 border thin-border bg-white space-y-4">
             <span class="font-mono text-xs text-mono-muted tracking-widest block">02 / BURGER IPJANG</span>
             <h3 class="text-2xl font-bold text-mono-dark">버거입장</h3>
@@ -673,7 +644,6 @@
             </p>
           </div>
 
-          <!-- 입장돈까스 -->
           <div class="p-8 border thin-border bg-white space-y-4">
             <span class="font-mono text-xs text-mono-muted tracking-widest block">03 / TONKATSU</span>
             <h3 class="text-2xl font-bold text-mono-dark">입장돈까스</h3>
@@ -683,7 +653,6 @@
             </p>
           </div>
 
-          <!-- 아이림어린이집 -->
           <div class="p-8 border thin-border bg-white space-y-4">
             <span class="font-mono text-xs text-mono-muted tracking-widest block">04 / DAYCARE</span>
             <h3 class="text-2xl font-bold text-mono-dark">아이림어린이집</h3>
@@ -693,7 +662,6 @@
             </p>
           </div>
 
-          <!-- 리하레터 -->
           <div class="p-8 border thin-border bg-white space-y-4">
             <span class="font-mono text-xs text-mono-muted tracking-widest block">05 / RIHA LETTER</span>
             <h3 class="text-2xl font-bold text-mono-dark">리하레터</h3>
@@ -702,15 +670,11 @@
               원바디 캠퍼스 사역자가 자립 선교 재정을 위해 시작한 크리스천 디자인 굿즈 브랜드. 손글씨 묵상 메시지와 굿즈를 통해 일상의 위로와 복음을 전합니다.
             </p>
           </div>
-
         </div>
       </div>
     </section>
 
-
-    <!-- ================================================================= -->
-    <!-- VIEW 4: LIFE TOGETHER (주거 & 마을)                               -->
-    <!-- ================================================================= -->
+    <!-- VIEW 4: LIFE TOGETHER -->
     <section id="view-life" class="view-container">
       <div class="border-b thin-border bg-mono-subtle/60 px-6 md:px-12 py-3 flex items-center justify-between text-xs font-mono">
         <button onclick="switchView('view-overview')" class="text-mono-dark hover:underline flex items-center gap-1.5 font-medium">
@@ -721,7 +685,7 @@
 
       <div class="border-b thin-border bg-white">
         <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-16 md:py-24">
-          <span class="font-mono text-xs text-mono-muted tracking-[0.2em] uppercase mb-3">(SECTION — 03)</span>
+          <span class="font-mono text-xs text-mono-muted tracking-[0.2em] uppercase block mb-3">(SECTION — 03)</span>
           <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-mono-dark max-w-4xl mb-6 tracking-[-0.03em]">
             더불어 사는 삶의 자리,<br>
             <span class="text-mono-muted">집과 마을을 세우다.</span>
@@ -733,9 +697,7 @@
         </div>
       </div>
 
-      <!-- 3대 주거 공동체 -->
       <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-24 space-y-16">
-        
         <div class="p-8 sm:p-12 border thin-border bg-white space-y-4">
           <span class="font-mono text-xs text-mono-muted tracking-widest block">01 / YEONGOK CENTER</span>
           <h3 class="text-2xl sm:text-3xl font-bold text-mono-dark">원바디 연곡센터</h3>
@@ -759,14 +721,10 @@
             먹고 자고 일하며 쉬는 일상의 모든 순간을 공유하는 제자훈련 하우스. 아침 말씀 묵상과 절제된 일과를 지키며, 갈등이 생길 때 비난 대신 솔직한 대화와 용서를 배웁니다.
           </p>
         </div>
-
       </div>
     </section>
 
-
-    <!-- ================================================================= -->
-    <!-- VIEW 5: GATHERINGS & WORSHIP (예배 & 훈련)                         -->
-    <!-- ================================================================= -->
+    <!-- VIEW 5: GATHERINGS -->
     <section id="view-gatherings" class="view-container">
       <div class="border-b thin-border bg-mono-subtle/60 px-6 md:px-12 py-3 flex items-center justify-between text-xs font-mono">
         <button onclick="switchView('view-overview')" class="text-mono-dark hover:underline flex items-center gap-1.5 font-medium">
@@ -777,7 +735,7 @@
 
       <div class="border-b thin-border bg-white">
         <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-16 md:py-24">
-          <span class="font-mono text-xs text-mono-muted tracking-[0.2em] uppercase mb-3">(SECTION — 04)</span>
+          <span class="font-mono text-xs text-mono-muted tracking-[0.2em] uppercase block mb-3">(SECTION — 04)</span>
           <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-mono-dark max-w-4xl mb-6 tracking-[-0.03em]">
             예배와 훈련,<br>
             <span class="text-mono-muted">성찬과 안식의 여정</span>
@@ -790,7 +748,6 @@
 
       <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-20">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          
           <div class="p-8 border thin-border bg-white space-y-4">
             <span class="font-mono text-xs text-mono-muted tracking-widest block">CHURCH</span>
             <h3 class="text-2xl font-bold text-mono-dark">원바디처치 (만찬예배)</h3>
@@ -822,15 +779,11 @@
               자연 속에서 쉼과 예배, 축제를 누리며 몸과 마음, 영혼의 전인적 회복을 경험하는 3박 4일 안식 컨퍼런스와 화해를 배워가는 평화의 여정을 진행합니다.
             </p>
           </div>
-
         </div>
       </div>
     </section>
 
-
-    <!-- ================================================================= -->
-    <!-- VIEW 6: STORIES (8인의 이야기)                                    -->
-    <!-- ================================================================= -->
+    <!-- VIEW 6: STORIES -->
     <section id="view-stories" class="view-container">
       <div class="border-b thin-border bg-mono-subtle/60 px-6 md:px-12 py-3 flex items-center justify-between text-xs font-mono">
         <button onclick="switchView('view-overview')" class="text-mono-dark hover:underline flex items-center gap-1.5 font-medium">
@@ -854,7 +807,6 @@
 
       <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-20">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          
           <div class="p-8 sm:p-10 border thin-border bg-white space-y-4 shadow-sm hover:shadow-md transition-shadow">
             <div class="flex items-center justify-between font-mono text-xs text-mono-muted border-b thin-border pb-3">
               <span>01 / 이광희</span>
@@ -942,7 +894,6 @@
               스스로 강하다 믿던 삶에서 자기부인과 양보를 배웠습니다. 폴란드 단기 건축선교를 다녀오며 하나님이 살아 계심을 온몸으로 확신하게 되었습니다.
             </p>
           </div>
-
         </div>
       </div>
     </section>
@@ -953,9 +904,7 @@
   <footer class="border-t thin-border bg-mono-dark text-white py-16">
     <div class="max-w-[1600px] mx-auto px-6 md:px-12">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-14 border-b border-white/10">
-        
         <div class="md:col-span-5 space-y-4">
-          <!-- Vector Logo Inverted White in Footer -->
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 54" class="h-10 w-auto text-white">
               <text x="0" y="34" font-family="'Cormorant Garamond', 'Times New Roman', serif" font-size="40" font-weight="700" letter-spacing="-1.2" fill="#FFFFFF">onebody</text>
@@ -1001,7 +950,6 @@
             </p>
           </div>
         </div>
-
       </div>
 
       <div class="pt-8 flex flex-col sm:flex-row items-baseline justify-between font-mono text-[11px] text-white/40 gap-4">
@@ -1022,7 +970,6 @@
         target.classList.add('active');
       }
 
-      // Update Top Nav Styling
       const navLinks = document.querySelectorAll('.nav-link');
       navLinks.forEach(link => {
         if (link.dataset.view === viewId) {
@@ -1034,7 +981,6 @@
         }
       });
 
-      // Show/Hide "Home Return" Button
       const homeReturnBtn = document.getElementById('homeReturnBtn');
       if (homeReturnBtn) {
         if (viewId === 'view-overview') {
