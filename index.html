@@ -92,7 +92,7 @@
       <!-- Desktop Nav -->
       <nav class="hidden lg:flex items-center gap-8 font-mono text-[12px] tracking-widest uppercase">
         <button onclick="switchView('view-overview')" class="nav-link py-1 text-mono-dark font-semibold underline transition-colors" data-view="view-overview">Overview</button>
-        <button onclick="switchView('view-campus')" class="nav-link py-1 text-mono-muted hover:text-mono-dark transition-colors" data-view="view-campus">Campus</button>
+        <a href="https://k369sl49-gif.github.io/Onebody-campus/" class="nav-link py-1 text-mono-muted hover:text-mono-dark transition-colors">Campus</a>
         <button onclick="switchView('view-business')" class="nav-link py-1 text-mono-muted hover:text-mono-dark transition-colors" data-view="view-business">Business</button>
         <button onclick="switchView('view-life')" class="nav-link py-1 text-mono-muted hover:text-mono-dark transition-colors" data-view="view-life">Housing</button>
         <button onclick="switchView('view-gatherings')" class="nav-link py-1 text-mono-muted hover:text-mono-dark transition-colors" data-view="view-gatherings">Gatherings</button>
@@ -114,7 +114,7 @@
     <!-- Mobile Drawer -->
     <div id="mobileMenu" class="hidden lg:hidden border-t thin-border bg-mono-bg px-6 py-6 flex flex-col gap-4 font-mono text-xs tracking-wider">
       <button onclick="switchView('view-overview'); toggleMobileMenu();" class="text-left py-2 border-b thin-border">01. OVERVIEW (홈)</button>
-      <button onclick="switchView('view-campus'); toggleMobileMenu();" class="text-left py-2 border-b thin-border">02. CAMPUS COMMUNITY (캠퍼스)</button>
+      <a href="https://k369sl49-gif.github.io/Onebody-campus/" class="text-left py-2 border-b thin-border block">02. CAMPUS COMMUNITY (캠퍼스)</a>
       <button onclick="switchView('view-business'); toggleMobileMenu();" class="text-left py-2 border-b thin-border">03. BUSINESS &amp; WORK (일터선교)</button>
       <button onclick="switchView('view-life'); toggleMobileMenu();" class="text-left py-2 border-b thin-border">04. LIFE TOGETHER (주거·마을)</button>
       <button onclick="switchView('view-gatherings'); toggleMobileMenu();" class="text-left py-2 border-b thin-border">05. GATHERINGS (예배·훈련)</button>
@@ -327,8 +327,8 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <!-- 01. CAMPUS -->
-            <div onclick="switchView('view-campus')" class="group cursor-pointer bg-white border thin-border hover:border-mono-dark transition-all flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md">
+            <!-- 01. CAMPUS (새 캠퍼스 커뮤니티 페이지로 직접 연결) -->
+            <a href="https://k369sl49-gif.github.io/Onebody-campus/" class="group cursor-pointer bg-white border thin-border hover:border-mono-dark transition-all flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md">
               <div>
                 <div class="img-slot aspect-[16/10] border-b thin-border relative overflow-hidden">
                   <img 
@@ -353,7 +353,7 @@
               <div class="px-6 sm:px-8 pb-6 pt-2 font-mono text-[11px] text-mono-muted border-t thin-border">
                 CAMPUS OUTREACH &bull; PRAYER MEETINGS
               </div>
-            </div>
+            </a>
 
             <!-- 02. BUSINESS -->
             <div onclick="switchView('view-business')" class="group cursor-pointer bg-white border thin-border hover:border-mono-dark transition-all flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md">
@@ -467,133 +467,6 @@
         </div>
       </div>
 
-    </section>
-
-    <!-- VIEW 2: CAMPUS -->
-    <section id="view-campus" class="view-container">
-      <div class="border-b thin-border bg-mono-subtle/60 px-6 md:px-12 py-3 flex items-center justify-between text-xs font-mono">
-        <button onclick="switchView('view-overview')" class="text-mono-dark hover:underline flex items-center gap-1.5 font-medium">
-          <span>&larr;</span> <span>홈(전체 목차)으로 돌아가기</span>
-        </button>
-        <span class="text-mono-muted">SECTION: (01) CAMPUS</span>
-      </div>
-
-      <div class="border-b thin-border bg-white">
-        <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-16 md:py-24">
-          <div class="inline-flex items-center gap-2 px-3 py-1 border border-mono-campus text-mono-campus font-mono text-xs mb-6">
-            <span class="w-2 h-2 rounded-full bg-mono-campus"></span>
-            ONEBODY CAMPUS COMMUNITY
-          </div>
-
-          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold leading-[1.2] text-mono-dark max-w-4xl mb-6 tracking-[-0.03em]">
-            “우리는 대학이 바뀌면,<br>
-            <span class="text-mono-campus">세상이 바뀐다고</span> 믿습니다.”
-          </h1>
-
-          <p class="text-base sm:text-lg text-mono-muted max-w-2xl leading-relaxed font-sans">
-            2010년 예수님처럼 살고 싶다는 한 사람의 순종에서 시작되었습니다.
-            경쟁과 비교 속에 방향을 잃은 청년들에게 복음의 참된 안식을 전하고, 학과마다 작은 기도모임을 개척하며 세상으로 파송합니다.
-          </p>
-        </div>
-      </div>
-
-      <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-24 border-b thin-border">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          <div class="space-y-6">
-            <div class="img-slot aspect-[16/10] border thin-border relative group">
-              <img 
-                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80" 
-                alt="캠퍼스 잔디밭 모임" 
-                class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-700"
-              >
-            </div>
-            <div class="space-y-3">
-              <span class="font-mono text-xs text-mono-muted">(01/03) OUTREACH</span>
-              <h3 class="text-2xl font-bold text-mono-dark">캠퍼스 복음화</h3>
-              <p class="text-sm text-mono-muted leading-relaxed font-sans">
-                매주 캠퍼스에서 청년들을 만나 복음을 전하고 함께 식탁을 나눕니다. 각 학과에 2~3명이 모여 기도하는 작은 모임을 세워 캠퍼스 전체에 복음이 흘러가는 움직임을 만듭니다.
-              </p>
-            </div>
-          </div>
-
-          <div class="space-y-6">
-            <div class="img-slot aspect-[16/10] border thin-border relative group">
-              <img 
-                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" 
-                alt="대학생 비즈니스 멘토링" 
-                class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-700"
-              >
-            </div>
-            <div class="space-y-3">
-              <span class="font-mono text-xs text-mono-muted">(02/03) TRAINING</span>
-              <h3 class="text-2xl font-bold text-mono-dark">비즈니스 선교훈련</h3>
-              <p class="text-sm text-mono-muted leading-relaxed font-sans">
-                캠퍼스 4년, 일터 40년. 대학 시절부터 일터 현장의 사람들을 만나며, 자신의 일과 비즈니스를 통해 하나님 나라의 운동에 참여하도록 훈련합니다.
-              </p>
-            </div>
-          </div>
-
-          <div class="space-y-6">
-            <div class="img-slot aspect-[16/10] border thin-border relative group">
-              <img 
-                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80" 
-                alt="글로벌 유학생 커뮤니티" 
-                class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-700"
-              >
-            </div>
-            <div class="space-y-3">
-              <span class="font-mono text-xs text-mono-muted">(03/03) DIASPORA</span>
-              <h3 class="text-2xl font-bold text-mono-dark">유학생 &amp; 이주민 사역</h3>
-              <p class="text-sm text-mono-muted leading-relaxed font-sans">
-                한국에서 공부하고 일하는 외국인 청년들에게 먼저 다가가 친구가 됩니다. 비타500 나눔과 식탁 교제로 환대하며 그리스도의 몸 된 공동체로 초대합니다.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CAMPUS MISSION DONATION -->
-      <div class="bg-white py-20 px-6 md:px-12">
-        <div class="max-w-3xl mx-auto border-2 border-mono-campus bg-mono-bg p-8 sm:p-12 relative shadow-sm">
-          <div class="font-mono text-xs text-mono-campus tracking-widest uppercase mb-2">
-            Onebody Community – Campus Mission
-          </div>
-
-          <h3 class="text-2xl sm:text-3xl font-bold text-mono-dark mb-6 tracking-tight">
-            “우리는 대학이 바뀌면, 세상이 바뀐다고 믿습니다.”
-          </h3>
-
-          <div class="space-y-4 text-sm text-mono-muted leading-relaxed font-sans mb-8">
-            <p class="text-mono-dark">
-              원바디 커뮤니티의 <strong>Campus Mission</strong>은 매주 캠퍼스에서 청년들을 만나 복음을 전하고, 함께 삶을 나누며 예수님의 제자로 세워갑니다. 한 사람을 공동체 안에서 세워 캠퍼스에서 세상으로 보냅니다.
-            </p>
-
-            <div class="p-5 bg-white border thin-border space-y-3">
-              <p><strong>1. 캠퍼스 복음화:</strong> 한 사람에게 복음을 전하고 예수님의 제자로 함께 살아갑니다. 각 학과에 기도모임을 세우고 연결하여, 캠퍼스 전체에 복음이 흘러가는 움직임을 만들어갑니다.</p>
-              <p><strong>2. 비즈니스 선교훈련:</strong> 캠퍼스 4년, 일터 40년. 캠퍼스에서부터 실제 일터와 비즈니스 현장의 사람들을 만나며, 자신의 일과 비즈니스를 통해 하나님 나라의 운동에 참여하도록 훈련합니다.</p>
-            </div>
-
-            <p>
-              여러분의 후원은 캠퍼스에서 한 사람을 만나 복음을 전하고, 공동체 안에서 제자로 세워 세상으로 보내는 사역에 사용됩니다.
-            </p>
-
-            <div class="p-4 bg-mono-subtle border thin-border">
-              <p class="text-base font-bold text-mono-dark mb-1">매월 1만 원으로 함께할 500명의 동역자를 초대합니다.</p>
-              <p class="text-xs text-mono-muted">여러분의 동역으로 캠퍼스의 한 사람을 만나고 세상으로 보내는 사역을 계속 이어갈 수 있습니다.</p>
-            </div>
-          </div>
-
-          <a 
-            href="https://go.missionfund.org/onebodycampusmission" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 bg-mono-campus hover:bg-mono-campus/90 text-white font-mono text-xs sm:text-sm font-semibold tracking-wider transition-all"
-          >
-            <span>캠퍼스 미션 후원 동참하기 (미션펀드 링크)</span>
-            <span>↗</span>
-          </a>
-        </div>
-      </div>
     </section>
 
     <!-- VIEW 3: BUSINESS -->
@@ -926,7 +799,7 @@
             <span class="text-white/40 tracking-widest block font-semibold">[사역과 삶의 자리]</span>
             <ul class="space-y-2 text-white/80">
               <li><button onclick="switchView('view-overview')" class="hover:underline text-left">01. 개요 및 비전</button></li>
-              <li><button onclick="switchView('view-campus')" class="hover:underline text-left">02. 캠퍼스 커뮤니티</button></li>
+              <li><a href="https://k369sl49-gif.github.io/Onebody-campus/" class="hover:underline text-left block">02. 캠퍼스 커뮤니티</a></li>
               <li><button onclick="switchView('view-business')" class="hover:underline text-left">03. 비즈니스 &amp; 일터</button></li>
               <li><button onclick="switchView('view-life')" class="hover:underline text-left">04. 주거 &amp; 삶의 자리</button></li>
             </ul>
