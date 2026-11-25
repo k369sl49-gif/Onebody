@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ONE BODY — Community &amp; Church</title>
+  <title>ONE BODY — Church</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -81,12 +81,10 @@
   <header class="sticky top-0 z-40 bg-mono-bg/95 backdrop-blur-md border-b thin-border">
     <div class="max-w-[1600px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
       
-      <!-- Logo -->
-      <a href="javascript:void(0)" onclick="switchView('view-overview')" class="flex items-center group py-1" title="ONE BODY — Community & Church">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 54" class="h-9 w-auto text-mono-dark transition-opacity group-hover:opacity-75">
-          <text x="0" y="34" font-family="'Cormorant Garamond', 'Times New Roman', serif" font-size="40" font-weight="700" letter-spacing="-1.2" fill="currentColor">onebody</text>
-          <text x="2" y="49" font-family="'JetBrains Mono', 'Pretendard', sans-serif" font-size="8.5" font-weight="600" letter-spacing="3.2" fill="#6E6E66">COMMUNITY &amp; CHURCH</text>
-        </svg>
+      <!-- Logo (Pure Wordmark, No Symbol) -->
+      <a href="javascript:void(0)" onclick="switchView('view-overview')" class="flex flex-col leading-none group py-1" title="ONE BODY — Church">
+        <span class="font-serif text-[32px] font-bold tracking-[-0.03em] text-mono-dark lowercase leading-[0.9] transition-opacity group-hover:opacity-75">onebody</span>
+        <span class="font-mono text-[8.5px] font-semibold tracking-[0.26em] text-mono-muted uppercase mt-1">CHURCH</span>
       </a>
 
       <!-- Desktop Nav -->
@@ -169,6 +167,7 @@
           <img 
             src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=2000&q=80" 
             alt="원바디 공동체 식탁과 교제" 
+            onerror="this.onerror=null; this.src='https://placehold.co/1600x685/E6E6DC/121210?text=ONEBODY+COMMUNITY+ARCHIVE';"
             class="w-full h-full object-cover filter grayscale contrast-[1.08] opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-700"
           >
           <div class="absolute bottom-4 left-4 font-mono text-[10px] tracking-widest bg-mono-dark text-white px-3 py-1.5 flex items-center gap-2">
@@ -201,6 +200,7 @@
               <img 
                 src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=900&q=80" 
                 alt="함께하는 식탁 교제" 
+                onerror="this.onerror=null; this.src='https://placehold.co/900x675/E6E6DC/121210?text=EAT+-+FELLOWSHIP';"
                 class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-500"
               >
             </div>
@@ -213,7 +213,7 @@
             </div>
           </div>
 
-          <!-- WORK -->
+          <!-- WORK (Updated Unsplash Archive Photo) -->
           <div class="pt-10 lg:pt-0 lg:px-8 space-y-6">
             <span class="font-mono text-xs text-mono-muted block">(02/03)</span>
             <h3 class="text-3xl font-bold text-mono-dark">WORK</h3>
@@ -221,8 +221,9 @@
             
             <div class="img-slot aspect-[4/3] border thin-border relative group">
               <img 
-                src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80" 
-                alt="목공과 건축 노동의 현장" 
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80" 
+                alt="함께 일하며 섬기는 노동의 현장" 
+                onerror="this.onerror=null; this.src='https://placehold.co/900x675/E6E6DC/121210?text=WORK+-+MISSION';"
                 class="w-full h-full object-cover filter grayscale contrast-110 group-hover:scale-105 transition-transform duration-500"
               >
             </div>
@@ -245,6 +246,7 @@
               <img 
                 src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80" 
                 alt="함께 성장하는 청년들" 
+                onerror="this.onerror=null; this.src='https://placehold.co/900x675/E6E6DC/121210?text=GROW+-+COMMUNITY';"
                 class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-500"
               >
             </div>
@@ -293,9 +295,8 @@
               <p class="text-sm text-mono-muted leading-relaxed max-w-3xl mb-6 font-sans">
                 청년들의 졸업과 결혼, 출산 속에서 마주한 높은 주거 불안 앞에서, 청년들이 직접 목조주택 기술을 배워 천안 연곡리에 보금자리를 지었습니다. 건축 비즈니스(원바디 빌더)와 공동육아(아이림어린이집), 지역 요식업(버거입장, 입장돈까스)의 도전이 확장되었습니다.
               </p>
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl font-mono text-xs text-mono-muted">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl font-mono text-xs text-mono-muted">
                 <div class="border thin-border p-3 bg-mono-bg">원바디 연곡센터</div>
-                <div class="border thin-border p-3 bg-mono-bg">희망더함빌리지 (16가구)</div>
                 <div class="border thin-border p-3 bg-mono-bg">원바디 빌더 건축</div>
                 <div class="border thin-border p-3 bg-mono-bg">로컬 비즈니스 도전</div>
               </div>
@@ -327,13 +328,14 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <!-- 01. CAMPUS (새 캠퍼스 커뮤니티 페이지로 직접 연결) -->
+            <!-- 01. CAMPUS (Direct link to Onebody-campus) -->
             <a href="https://k369sl49-gif.github.io/Onebody-campus/" class="group cursor-pointer bg-white border thin-border hover:border-mono-dark transition-all flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md">
               <div>
                 <div class="img-slot aspect-[16/10] border-b thin-border relative overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80" 
                     alt="캠퍼스 커뮤니티" 
+                    onerror="this.onerror=null; this.src='https://placehold.co/900x562/E6E6DC/121210?text=01+CAMPUS+COMMUNITY';"
                     class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-700"
                   >
                   <div class="absolute top-3 left-3 bg-black/60 backdrop-blur px-2.5 py-1 text-[10px] font-mono text-white tracking-widest">
@@ -355,13 +357,14 @@
               </div>
             </a>
 
-            <!-- 02. BUSINESS -->
+            <!-- 02. BUSINESS (Updated Unsplash Archive Photo) -->
             <div onclick="switchView('view-business')" class="group cursor-pointer bg-white border thin-border hover:border-mono-dark transition-all flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md">
               <div>
                 <div class="img-slot aspect-[16/10] border-b thin-border relative overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80" 
-                    alt="비즈니스 커뮤니티" 
+                    src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=80" 
+                    alt="비즈니스 & 일터선교" 
+                    onerror="this.onerror=null; this.src='https://placehold.co/900x562/E6E6DC/121210?text=02+BUSINESS+%26+WORK';"
                     class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-700"
                   >
                   <div class="absolute top-3 left-3 bg-black/60 backdrop-blur px-2.5 py-1 text-[10px] font-mono text-white tracking-widest">
@@ -390,6 +393,7 @@
                   <img 
                     src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80" 
                     alt="삶의 자리 (주거와 마을)" 
+                    onerror="this.onerror=null; this.src='https://placehold.co/900x562/E6E6DC/121210?text=03+LIFE+TOGETHER';"
                     class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-700"
                   >
                   <div class="absolute top-3 left-3 bg-black/60 backdrop-blur px-2.5 py-1 text-[10px] font-mono text-white tracking-widest">
@@ -402,12 +406,12 @@
                     <span class="font-mono text-sm text-mono-muted group-hover:translate-x-1 transition-transform">&rarr;</span>
                   </div>
                   <p class="text-xs text-mono-muted leading-relaxed font-sans">
-                    청년 주거 문제를 함께 짊어지며 직접 지은 연곡센터, 16가구 22명 아이들의 희망더함빌리지, 생활 영성훈련 원바디 하우스.
+                    청년 주거 문제를 함께 짊어지며 청년들이 직접 목조주택 기술을 배워 지은 연곡센터와 일상을 나누는 생활 영성훈련 원바디 하우스.
                   </p>
                 </div>
               </div>
               <div class="px-6 sm:px-8 pb-6 pt-2 font-mono text-[11px] text-mono-muted border-t thin-border">
-                HOUSING &bull; VILLAGE &bull; DISCIPLE HOUSE
+                HOUSING &bull; YEONGOK CENTER &bull; DISCIPLE HOUSE
               </div>
             </div>
 
@@ -418,6 +422,7 @@
                   <img 
                     src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" 
                     alt="예배와 훈련 모임" 
+                    onerror="this.onerror=null; this.src='https://placehold.co/900x562/E6E6DC/121210?text=04+GATHERINGS';"
                     class="w-full h-full object-cover filter grayscale contrast-105 group-hover:scale-105 transition-transform duration-700"
                   >
                   <div class="absolute top-3 left-3 bg-black/60 backdrop-blur px-2.5 py-1 text-[10px] font-mono text-white tracking-widest">
@@ -580,15 +585,7 @@
         </div>
 
         <div class="p-8 sm:p-12 border thin-border bg-white space-y-4">
-          <span class="font-mono text-xs text-mono-muted tracking-widest block">02 / HEEMANG DEOHAM VILLAGE</span>
-          <h3 class="text-2xl sm:text-3xl font-bold text-mono-dark">희망더함빌리지 (성거읍 16가구 마을)</h3>
-          <p class="text-sm text-mono-muted leading-relaxed font-sans">
-            한국해비타트와 천안시, 1,000여 명 자원봉사자의 손길로 2024년 말 성거읍에 조성된 신혼부부 단독주택 단지입니다. 집과 집 사이 문턱을 낮추고, 22명의 아이들이 온 마을을 안전한 놀이터 삼아 함께 자라며 이웃이 가족이 되어가는 마을입니다.
-          </p>
-        </div>
-
-        <div class="p-8 sm:p-12 border thin-border bg-white space-y-4">
-          <span class="font-mono text-xs text-mono-muted tracking-widest block">03 / ONEBODY HOUSE</span>
+          <span class="font-mono text-xs text-mono-muted tracking-widest block">02 / ONEBODY HOUSE</span>
           <h3 class="text-2xl sm:text-3xl font-bold text-mono-dark">원바디 하우스 (공동체 생활훈련)</h3>
           <p class="text-sm text-mono-muted leading-relaxed font-sans">
             먹고 자고 일하며 쉬는 일상의 모든 순간을 공유하는 제자훈련 하우스. 아침 말씀 묵상과 절제된 일과를 지키며, 갈등이 생길 때 비난 대신 솔직한 대화와 용서를 배웁니다.
@@ -778,19 +775,16 @@
     <div class="max-w-[1600px] mx-auto px-6 md:px-12">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-14 border-b border-white/10">
         <div class="md:col-span-5 space-y-4">
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 54" class="h-10 w-auto text-white">
-              <text x="0" y="34" font-family="'Cormorant Garamond', 'Times New Roman', serif" font-size="40" font-weight="700" letter-spacing="-1.2" fill="#FFFFFF">onebody</text>
-              <text x="2" y="49" font-family="'JetBrains Mono', 'Pretendard', sans-serif" font-size="8.5" font-weight="600" letter-spacing="3.2" fill="#AAAAAA">COMMUNITY &amp; CHURCH</text>
-            </svg>
+          <div class="flex flex-col leading-none">
+            <span class="font-serif text-[32px] font-bold tracking-[-0.03em] text-white lowercase leading-[0.9]">onebody</span>
+            <span class="font-mono text-[8.5px] font-semibold tracking-[0.26em] text-white/60 uppercase mt-1">CHURCH</span>
           </div>
           <p class="italic text-sm text-white/70 max-w-sm">
             “서로 사랑함으로 세상 속에 존재하는 안식공동체”
           </p>
           <div class="font-mono text-xs text-white/50 space-y-1">
             <p>EAT &bull; WORK &bull; GROW</p>
-            <p>천안 연곡센터 &bull; 성거 희망더함빌리지 &bull; 원바디처치</p>
-            <p>사무국: 010-8245-1090</p>
+            <p>천안 연곡센터 &bull; 원바디처치</p>
           </div>
         </div>
 
@@ -825,8 +819,21 @@
         </div>
       </div>
 
-      <div class="pt-8 flex flex-col sm:flex-row items-baseline justify-between font-mono text-[11px] text-white/40 gap-4">
-        <div>&copy; 2026 ONE BODY COMMUNITY &amp; CHURCH. ALL RIGHTS RESERVED.</div>
+      <!-- Church Legal & Contact Info Line -->
+      <div class="pt-8 pb-6 border-b border-white/10 font-sans text-xs sm:text-[13px] text-white/65 tracking-tight">
+        <p class="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+          <span>주소 충청남도 천안시 동남구 성불사길 14, 2층(안서동)</span>
+          <span class="text-white/25">|</span>
+          <span>전화번호 010-8191-3621</span>
+          <span class="text-white/25">|</span>
+          <span>고유번호 503-82-87818</span>
+          <span class="text-white/25">|</span>
+          <span>대표목사 유정민</span>
+        </p>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-baseline justify-between font-mono text-[11px] text-white/40 gap-4">
+        <div>&copy; 2026 ONE BODY CHURCH. ALL RIGHTS RESERVED.</div>
         <div>DESIGNED WITH BYMONOLOG EDITORIAL ESSENCE.</div>
       </div>
     </div>
